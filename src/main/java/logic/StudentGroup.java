@@ -10,7 +10,6 @@ public class StudentGroup {
     private Long groupID;
     private int year;
     private String flow;
-
     private Set courses = new HashSet();
 
     public StudentGroup() {
