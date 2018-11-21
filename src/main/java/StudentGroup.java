@@ -6,6 +6,7 @@ public class StudentGroup {
     private int year;
     private String flow;
     private Set students = new HashSet();
+    private Set courses = new HashSet();
 
     public StudentGroup() {
 
@@ -41,5 +42,13 @@ public class StudentGroup {
 
     public void setStudents(Set students) {
         this.students = students;
+    }
+
+    public Set getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set courses) {
+        this.courses = courses;
     }
 }
