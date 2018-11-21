@@ -1,3 +1,5 @@
+package logic;
+
 import javax.persistence.*;
 
 @Entity
@@ -6,7 +8,7 @@ public class Subject {
 
     private Long subjectID;
     private String subjectName;
-    private Proficiency requiredProficiency; //Skill teacher has to have to be able to teach this subject
+    private Proficiency requiredProficiency; //logic.Skill teacher has to have to be able to teach this subject
 
 
     public Subject(){
@@ -40,6 +42,5 @@ public class Subject {
     public void setRequiredProficiency(Proficiency requiredProficiency) {
         this.requiredProficiency = requiredProficiency;
     }
-
 
 }
