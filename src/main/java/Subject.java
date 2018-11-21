@@ -1,3 +1,7 @@
+import javax.persistence.*;
+
+@Entity
+@Table(name = "SUBJECT")
 public class Subject {
 
     private Long subjectID;
@@ -9,6 +13,9 @@ public class Subject {
 
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name = "SUBJECT_ID")
     public Long getSubjectID() {
         return subjectID;
     }
@@ -16,7 +23,7 @@ public class Subject {
     public void setSubjectID(Long subjectID) {
         this.subjectID = subjectID;
     }
-
+    @Column(name = "SUBJECT_NAME")
     public String getSubjectName() {
         return subjectName;
     }
@@ -25,6 +32,7 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
+    @Column(name = "REQUIRED_PROFICIENCY")
     public Proficiency getRequiredProficiency() {
         return requiredProficiency;
     }

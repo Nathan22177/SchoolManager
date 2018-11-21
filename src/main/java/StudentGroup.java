@@ -1,17 +1,23 @@
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "STUDENT_GROUP")
 public class StudentGroup {
     private Long groupID;
     private int year;
     private String flow;
-    private Set students = new HashSet();
+
     private Set courses = new HashSet();
 
     public StudentGroup() {
 
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "GROUP_ID", length = 10, nullable = false)
     public Long getGroupID() {
         return groupID;
     }
@@ -19,7 +25,7 @@ public class StudentGroup {
     public void setGroupID(Long groupID) {
         this.groupID = groupID;
     }
-
+    @Column(name = "GRADE", length = 5)
     public int getYear() {
         return year;
     }
@@ -27,7 +33,7 @@ public class StudentGroup {
     public void setYear(int year) {
         this.year = year;
     }
-
+    @Column(name = "STUDENT_FLOW", length = 5)
     public String getFlow() {
         return flow;
     }
@@ -36,14 +42,8 @@ public class StudentGroup {
         this.flow = flow;
     }
 
-    public Set getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set students) {
-        this.students = students;
-    }
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "GROUP_COURSES", joinColumns = {@JoinColumn(name = "GROUP_ID")}, inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID")})
     public Set getCourses() {
         return courses;
     }

@@ -1,7 +1,9 @@
 
+import javax.persistence.*;
 import java.util.Set;
 
-
+@Entity
+@Table(name = "CLASS")
 public class Class {
     private Long teacherID;
     private Long subjectID;
@@ -9,7 +11,8 @@ public class Class {
 
     public Class() {
     }
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "ATTENDING_GROUPS", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "GROUP_ID")})
     public Set getAttendingGroups() {
         return attendingGroups;
     }
@@ -18,6 +21,7 @@ public class Class {
         this.attendingGroups = attendingGroups;
     }
 
+    @Column(name = "SUBJECT_ID")
     public Long getSubjectID() {
         return subjectID;
     }
@@ -26,6 +30,7 @@ public class Class {
         this.subjectID = subjectID;
     }
 
+    @Column(name = "TEACHER_ID")
     public Long getTeacherID() {
         return teacherID;
     }

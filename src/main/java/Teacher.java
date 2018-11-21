@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Teacher", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
+@Table(name = "TEACHER")
 public class Teacher {
 
     private Long id;
@@ -21,14 +21,14 @@ public class Teacher {
     }
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "TEACHER'S_SKILLSET", joinColumns = {@JoinColumn(name = "id")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
+    @JoinTable(name = "TEACHER'S_SKILLSET", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
     public Set getSkills(){
         return skills;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="id", length = 10, nullable = false)
+    @Column(name ="TEACHER_ID", length = 10, nullable = false)
     public Long getId() {
         return id;
     }
@@ -37,7 +37,7 @@ public class Teacher {
         this.id = id;
     }
 
-    @Column(name = "first name", length = 20)
+    @Column(name = "FIRST_NAME", length = 20)
     public String getFirstName() {
         return firstName;
     }
@@ -46,7 +46,7 @@ public class Teacher {
         this.firstName = firstName;
     }
 
-    @Column(name = "last name", length = 20)
+    @Column(name = "LAST_NAME", length = 20)
     public String getLastName() {
         return lastName;
     }
@@ -55,7 +55,7 @@ public class Teacher {
         this.lastName = lastName;
     }
 
-    @Column(name = "age", length = 5)
+    @Column(name = "AGE", length = 5)
     public int getAge() {
         return age;
     }
