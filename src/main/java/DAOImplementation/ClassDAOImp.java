@@ -1,16 +1,17 @@
 package DAOImplementation;
 
 import DAOInterfaces.ClassDAO;
-import jdk.nashorn.internal.scripts.JO;
-import org.hibernate.Session;
-import util.HibernateUtil;
 import logic.StudentGroup;
 import logic.Subject;
 import logic.Teacher;
+import org.hibernate.Session;
+import util.HibernateUtil;
 
 import javax.swing.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class ClassDAOImp implements ClassDAO {
 
@@ -80,18 +81,66 @@ public class ClassDAOImp implements ClassDAO {
     }
 
     public Collection getAllClasses() throws SQLException {
-        return null;
+        Session session = null;
+        List classes = new ArrayList<Class>();
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            classes = session.createQuery("from CLASS", Class.class).list();
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при выводе списка уроков", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return classes;
     }
 
     public Collection getClassesByTeacher(Teacher teacher) throws SQLException {
-        return null;
+        Session session = null;
+        List classes;
+        try{
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            Long teacherID = teacher.getId();
+            classes = session.createQuery("from CLASS where TEACHER_ID = :teacherID").setParameter("teacherID", teacherID).list();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return classes;
     }
 
     public Collection getClassesBySubject(Subject subject) throws SQLException {
-        return null;
+        Session session = null;
+        List classes;
+        try{
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            Long subjectID = subject.getSubjectID();
+            classes = session.createQuery("from CLASS where SUBJECT_ID = :subjectID").setParameter("subjectID", subjectID).list();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return classes;
     }
 
-    public Collection getClassesbyStudentGroup(StudentGroup studentGroup) throws SQLException {
-        return null;
+    public Collection getClassesByStudentGroup(StudentGroup studentGroup) throws SQLException {
+        Session session = null;
+        List classes;
+        try{
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            Long groupID = studentGroup.getGroupID();
+            classes = session.createQuery("from CLASS where GROUP_ID = :groupID").setParameter("groupID", groupID).list();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return classes;
     }
 }

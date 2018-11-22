@@ -16,5 +16,5 @@ public interface ClassDAO {
     public Collection getAllClasses() throws SQLException;
     public Collection getClassesByTeacher(Teacher teacher) throws SQLException;
     public Collection getClassesBySubject(Subject subject) throws SQLException;
-    public Collection getClassesbyStudentGroup(StudentGroup studentGroup) throws SQLException;
+    public Collection getClassesByStudentGroup(StudentGroup studentGroup) throws SQLException;
 }
