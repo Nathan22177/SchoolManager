@@ -4,15 +4,14 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class"> org.hsqldb.jdbcDriver</property>
-        <property name="hibernate.connection.url"> jdbc:hsqldb:hsql://localhost</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/SchoolManagement</property>
         <property name="hibernate.connection.username">root</property>
         <property name="connection.password"/>
         <property name="connection.pool_size">1</property>
         <property name="current_session_context_class">thread</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create-drop</property>
         <mapping class="logic.Class" />
         <mapping class="logic.Skill" />
         <mapping class="logic.StudentGroup" />

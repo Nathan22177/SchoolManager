@@ -1,6 +1,5 @@
-package logic;
+package util;
 
-import com.mysql.cj.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -10,13 +9,13 @@ public class HibernateUtil {
     static {
         try {
             sessionFactory = new Configuration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
+        } catch (Throwable exception) {
+            System.err.println("Initial SessionFactory creation failed." + exception);
+            throw new ExceptionInInitializerError(exception);
         }
     }
 
-    public static SessionFactory getSessionFactory(){
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 }
