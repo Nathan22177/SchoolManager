@@ -31,7 +31,7 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public void updateClass(Long classID, Class lesson) throws SQLException {
+    public void updateClass(Class lesson) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -61,7 +61,6 @@ public class ClassDAOImp implements ClassDAO {
                 session.close();
             }
         }
-
     }
 
     public Class getClassByID(Long classID) throws SQLException {

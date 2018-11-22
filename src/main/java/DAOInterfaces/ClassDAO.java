@@ -10,7 +10,7 @@ import java.util.Collection;
 
 public interface ClassDAO {
     public void addClass(Class lesson) throws SQLException;
-    public void updateClass(Long classID, Class lesson) throws SQLException;
+    public void updateClass(Class lesson) throws SQLException;
     public void deleteClass(Class lesson) throws SQLException;
     public Class getClassByID(Long classID) throws SQLException;
     public Collection getAllClasses() throws SQLException;

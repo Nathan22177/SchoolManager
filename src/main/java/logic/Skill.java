@@ -3,7 +3,7 @@ package logic;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Skills")
+@Table(name = "SKILL")
 public class Skill {
     private String name;
     private Proficiency skill;
@@ -20,7 +20,7 @@ public class Skill {
         this.name = name;
     }
 
-    @Column(name = "SKILLS")
+    @Column(name = "SKILL_REQUIRED")
     public Proficiency getSkill() {
         return skill;
     }

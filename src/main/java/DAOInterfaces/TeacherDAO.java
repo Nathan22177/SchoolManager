@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public interface TeacherDAO {
     public void addTeacher(Teacher teacher) throws SQLException;
-    public void updateTeacher(Long teacherID, Teacher teacher) throws SQLException;
+    public void updateTeacher(Teacher teacher) throws SQLException;
     public void deleteTeacher(Teacher teacher) throws SQLException;
     public Teacher getTeacherByID(Long teacherID) throws SQLException;
     public Teacher getTeacherByLastName(String lastName) throws SQLException;

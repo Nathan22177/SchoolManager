@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public interface StudentGroupDAO {
     public void addStudentGroup(StudentGroup studentGroup) throws SQLException;
-    public void updateStudentGroup(Long groupID, StudentGroup studentGroup) throws SQLException;
+    public void updateStudentGroup(StudentGroup studentGroup) throws SQLException;
     public void deleteStudentGroup(StudentGroup studentGroup) throws SQLException;
     public StudentGroup getGroupByID(Long groupID) throws SQLException;
     public StudentGroup getGroupByYearAndFlow(int year, String flow) throws SQLException;
