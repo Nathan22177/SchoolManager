@@ -95,7 +95,7 @@ public class ClassDAOImp implements ClassDAO {
         return classes;
     }
 
-    public Collection getClassesByTeacher(Teacher teacher) throws SQLException {
+    public com.mysql.cj.xdevapi.Collection getClassesByTeacher(Teacher teacher) throws SQLException {
         Session session = null;
         List classes;
         try{
@@ -108,10 +108,10 @@ public class ClassDAOImp implements ClassDAO {
                 session.close();
             }
         }
-        return classes;
+        return (com.mysql.cj.xdevapi.Collection) classes;
     }
 
-    public Collection getClassesBySubject(Subject subject) throws SQLException {
+    public com.mysql.cj.xdevapi.Collection getClassesBySubject(Subject subject) throws SQLException {
         Session session = null;
         List classes;
         try{
@@ -124,10 +124,10 @@ public class ClassDAOImp implements ClassDAO {
                 session.close();
             }
         }
-        return classes;
+        return (com.mysql.cj.xdevapi.Collection) classes;
     }
 
-    public Collection getClassesByStudentGroup(StudentGroup studentGroup) throws SQLException {
+    public java.util.Collection<Class> getClassesByStudentGroup(StudentGroup studentGroup) throws SQLException {
         Session session = null;
         List classes;
         try{

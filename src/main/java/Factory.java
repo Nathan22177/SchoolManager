@@ -1,6 +1,5 @@
 import DAOImplementation.*;
 import DAOInterfaces.*;
-import logic.Teacher;
 
 public class Factory {
 

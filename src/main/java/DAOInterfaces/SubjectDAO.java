@@ -5,6 +5,7 @@ import logic.Subject;
 
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
 
 public interface SubjectDAO {
     public void addSubject(Subject subject) throws SQLException;
@@ -12,6 +13,6 @@ public interface SubjectDAO {
     public void deleteSubject(Subject subject) throws SQLException;
     public Subject getSubjectByName(String name) throws SQLException;
     public Subject getSubjectByID(Long subjectID) throws SQLException;
-    public Collection getAllSubjects() throws SQLException;
+    public List getAllSubjects() throws SQLException;
     public Collection getAllSubjectsByRequiredSkill(Skill skill) throws SQLException;
 }

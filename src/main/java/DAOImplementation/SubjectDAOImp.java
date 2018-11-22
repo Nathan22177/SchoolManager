@@ -2,7 +2,6 @@ package DAOImplementation;
 
 import DAOInterfaces.SubjectDAO;
 import logic.Skill;
-import logic.StudentGroup;
 import logic.Subject;
 import org.hibernate.Session;
 import util.HibernateUtil;
@@ -94,7 +93,7 @@ public class SubjectDAOImp implements SubjectDAO {
         return subject;
     }
 
-    public Collection getAllSubjects() throws SQLException {
+    public List getAllSubjects() throws SQLException {
         Session session = null;
         List subjects = new ArrayList<Subject>();
         try {
