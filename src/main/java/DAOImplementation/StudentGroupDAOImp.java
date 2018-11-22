@@ -79,7 +79,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
 
     public Collection getAllStudentGroups() throws SQLException {
         Session session = null;
-        List groups = new ArrayList<Class>();
+        List groups = new ArrayList<StudentGroup>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             groups = session.createQuery("from STUDENT_GROUP", StudentGroup.class).list();

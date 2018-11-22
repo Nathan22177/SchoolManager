@@ -94,7 +94,7 @@ public class SkillDAOImp implements SkillDAO {
 
     public Collection getAllSkills() throws SQLException {
         Session session = null;
-        List skills = new ArrayList<Class>();
+        List skills = new ArrayList<Skill>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             skills = session.createQuery("from SKILL", Skill.class).list();
