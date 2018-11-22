@@ -36,7 +36,6 @@ public class Class {
     public Long getTeacherID() {
         return teacherID;
     }
-
     public void setTeacherID(Long teacherID) {
         this.teacherID = teacherID;
     }

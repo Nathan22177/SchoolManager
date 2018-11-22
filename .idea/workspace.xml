@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20a26762-f4b9-4c23-b5e3-426e1cba112b" name="Default Changelist" comment="Adding implementation to SkillDAO">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAOImplementation/SubjectDAOImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAOImplementation/TeacherDAOImp.java" afterDir="false" />
+    <list default="true" id="20a26762-f4b9-4c23-b5e3-426e1cba112b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOImplementation/SkillDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOImplementation/SkillDAOImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAOImplementation/StudentGroupDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOImplementation/StudentGroupDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOInterfaces/SubjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOInterfaces/SubjectDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOImplementation/SubjectDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOImplementation/SubjectDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOImplementation/TeacherDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOImplementation/TeacherDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOInterfaces/TeacherDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOInterfaces/TeacherDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Teacher.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,15 +19,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DockManager">
-    <window id="2">
+    <window id="1">
       <content type="file-editors">
         <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <leaf>
             <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/StudentGroupDAOImp.java">
+              <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/SubjectDAOImp.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="540">
-                    <caret line="126" column="8" selection-start-line="126" selection-start-column="8" selection-end-line="138" selection-end-column="23" />
+                  <state relative-caret-position="1165">
+                    <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="109" selection-end-column="24" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
@@ -53,7 +54,7 @@
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="58" />
+          <entry key="java" value="66" />
           <entry key="md" value="1" />
           <entry key="txt" value="1" />
           <entry key="xml" value="2" />
@@ -62,7 +63,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="58" />
+          <entry key="JAVA" value="66" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="XML" value="2" />
         </counts>
@@ -70,15 +71,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="16" />
-          <entry key="java" value="6033" />
-          <entry key="txt" value="494" />
+          <entry key="java" value="6334" />
+          <entry key="txt" value="501" />
           <entry key="xml" value="179" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6033" />
-          <entry key="PLAIN_TEXT" value="510" />
+          <entry key="JAVA" value="6334" />
+          <entry key="PLAIN_TEXT" value="517" />
           <entry key="XML" value="179" />
         </counts>
       </usages-collector>
@@ -101,6 +102,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/logic/Teacher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logic/Skill.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
@@ -109,44 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/logic/StudentGroup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="23" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/SubjectDAOImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="127" column="1" lean-forward="true" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/TeacherDAOImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DAOInterfaces/SkillDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="270">
+              <caret line="15" column="50" lean-forward="true" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,8 +137,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/SkillDAOImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1458">
-              <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
+            <state relative-caret-position="379">
+              <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="91" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/SubjectDAOImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="505">
+              <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="125" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/DAOInterfaces/TeacherDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -169,8 +173,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/StudentGroupDAOImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+            <state relative-caret-position="528">
+              <caret line="132" column="53" lean-forward="true" selection-start-line="132" selection-start-column="48" selection-end-line="132" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -179,10 +183,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/ClassDAOImp.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/logic/Class.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="298">
+              <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -234,7 +238,6 @@
         <option value="$PROJECT_DIR$/src/main/java/HibernateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAO/DAOInterfaces.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAO/ClassDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/logic/Class.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/StudentGroup.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAOImplementation/ClassDAOImplementation.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/HibernateUtil.java" />
@@ -242,14 +245,16 @@
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/DAOInterfaces/SkillDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAOInterfaces/ClassDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/DAOInterfaces/TeacherDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/Skill.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAOImplementation/ClassDAOImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAOInterfaces/StudentGroupDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAOInterfaces/SubjectDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/DAOImplementation/StudentGroupDAOImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAOImplementation/SkillDAOImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAOImplementation/StudentGroupDAOImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAOImplementation/SubjectDAOImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/Class.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAOInterfaces/TeacherDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/Teacher.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAOImplementation/TeacherDAOImp.java" />
       </list>
     </option>
@@ -263,7 +268,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1610" />
+    <option name="width" value="1671" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -335,7 +340,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542899658554" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542905993720" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -520,14 +525,30 @@
       <option name="project" value="LOCAL" />
       <updated>1542895072475</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Adding implementation to SubjectDAO">
+      <created>1542899687187</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1542899687187</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1610" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="1671" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1967742" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1682185" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -540,11 +561,11 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32968238" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32968238" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.32968238" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32968238" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -572,7 +593,8 @@
     <MESSAGE value="Adding implementation to ClassDAO" />
     <MESSAGE value="Adding implementation to SkillDAO" />
     <MESSAGE value="Adding implementation to StudentGroupDAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding implementation to StudentGroupDAO" />
+    <MESSAGE value="Adding implementation to SubjectDAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding implementation to SubjectDAO" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/New Text Document.txt" />
@@ -615,36 +637,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/Teacher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DAOInterfaces/TeacherDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/logic/Proficiency.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -682,6 +674,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DAOInterfaces/SkillDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/logic/StudentGroup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -692,30 +694,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/SkillDAOImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1458">
-          <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/StudentGroupDAOImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+        <state relative-caret-position="528">
+          <caret line="132" column="53" lean-forward="true" selection-start-line="132" selection-start-column="48" selection-end-line="132" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DAOInterfaces/SkillDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/Subject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="108">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -729,10 +728,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/Subject.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/SkillDAOImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="379">
+          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="91" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DAOInterfaces/TeacherDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -746,10 +758,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/Teacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/SubjectDAOImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="127" column="1" lean-forward="true" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
+        <state relative-caret-position="505">
+          <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="125" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -758,8 +780,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DAOImplementation/TeacherDAOImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        <state relative-caret-position="270">
+          <caret line="15" column="50" lean-forward="true" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

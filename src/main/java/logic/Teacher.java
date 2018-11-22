@@ -23,7 +23,7 @@ public class Teacher {
     }
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "TEACHER'S_SKILLSET", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
+    @JoinTable(name = "TEACHER_SKILLSET", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
     public Set getSkills(){
         return skills;
     }
