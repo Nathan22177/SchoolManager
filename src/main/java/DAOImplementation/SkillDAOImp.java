@@ -18,7 +18,7 @@ public class SkillDAOImp implements SkillDAO {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(skill);
+            session.save(skill);
             session.getTransaction().commit();
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при добавлении навыка", JOptionPane.OK_OPTION);

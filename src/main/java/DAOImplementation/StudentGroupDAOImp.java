@@ -1,9 +1,8 @@
 package DAOImplementation;
 
-import DAOInterfaces.ClassDAO;
+import DAOInterfaces.StudentGroupDAO;
 import logic.StudentGroup;
 import logic.Subject;
-import logic.Teacher;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
@@ -13,17 +12,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ClassDAOImp implements ClassDAO {
-
-    public void addClass(Class lesson) throws SQLException {
+public class StudentGroupDAOImp implements StudentGroupDAO {
+    public void addStudentGroup(StudentGroup studentGroup) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(lesson);
+            session.save(studentGroup);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при добавлении урока", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при добавлении группы студентов", JOptionPane.OK_OPTION);
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -31,15 +29,15 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public void updateClass(Class lesson) throws SQLException {
+    public void updateStudentGroup(StudentGroup studentGroup) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(lesson);
+            session.update(studentGroup);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при обновлении урока", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при изменении группы студентов", JOptionPane.OK_OPTION);
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -47,15 +45,15 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public void deleteClass(Class lesson) throws SQLException {
+    public void deleteStudentGroup(StudentGroup studentGroup) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(lesson);
+            session.delete(studentGroup);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при удалении урока", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при удалении группы студентов", JOptionPane.OK_OPTION);
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -63,12 +61,12 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public Class getClassByID(Long classID) throws SQLException {
+    public StudentGroup getGroupByID(Long groupID) throws SQLException {
         Session session = null;
-        Class lesson = null;
+        StudentGroup studentGroup = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            lesson = (Class) session.load(Class.class, classID);
+            studentGroup = session.load(StudentGroup.class, groupID);
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при поиске урока по идентификатору", JOptionPane.OK_OPTION);
         } finally {
@@ -76,65 +74,63 @@ public class ClassDAOImp implements ClassDAO {
                 session.close();
             }
         }
-        return lesson;
+        return studentGroup;
     }
 
-    public Collection getAllClasses() throws SQLException {
+    public Collection getAllStudentGroups() throws SQLException {
         Session session = null;
-        List classes = new ArrayList<Class>();
+        List groups = new ArrayList<Class>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            classes = session.createQuery("from CLASS", Class.class).list();
+            groups = session.createQuery("from STUDENT_GROUP", StudentGroup.class).list();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при выводе списка уроков", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при выводе списка всех студенческих групп", JOptionPane.OK_OPTION);
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
         }
-        return classes;
+        return groups;
     }
 
-    public Collection getClassesByTeacher(Teacher teacher) throws SQLException {
+    public Collection getAllStudentGroupsByYear(int year) throws SQLException {
         Session session = null;
-        List classes;
+        List groups;
         try{
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            Long teacherID = teacher.getId();
-            classes = session.createQuery("from CLASS where TEACHER_ID = :teacherID").setParameter("teacherID", teacherID).list();
+            groups = session.createQuery("from STUDENT_GROUP where GRADE = :year").setParameter("year", year).list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
         }
-        return classes;
+        return groups;
     }
 
-    public Collection getClassesBySubject(Subject subject) throws SQLException {
+    public Collection getAllStudentGroupsByFlow(String flow) throws SQLException {
+        Session session = null;
+        List groups;
+        try{
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            groups = session.createQuery("from STUDENT_GROUP where STUDENT_FLOW = :flow").setParameter("flow", flow).list();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return groups;
+    }
+
+    public Collection getAllStudentGroupsBySubject(Subject subject) throws SQLException {
         Session session = null;
         List classes;
         try{
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             Long subjectID = subject.getSubjectID();
-            classes = session.createQuery("from CLASS where SUBJECT_ID = :subjectID").setParameter("subjectID", subjectID).list();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return classes;
-    }
-
-    public Collection getClassesByStudentGroup(StudentGroup studentGroup) throws SQLException {
-        Session session = null;
-        List classes;
-        try{
-            session = HibernateUtil.getSessionFactory().getCurrentSession();
-            session.beginTransaction();
-            Long groupID = studentGroup.getGroupID();
-            classes = session.createQuery("from CLASS where GROUP_ID = :groupID").setParameter("groupID", groupID).list();
+            classes = session.createQuery("from STUDENT_GROUPS where SUBJECT_ID = :subjectID").setParameter("subjectID", subjectID).list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
