@@ -8,11 +8,17 @@ import java.util.Collection;
 import java.util.List;
 
 public interface SubjectDAO {
-    public void addSubject(Subject subject) throws SQLException;
-    public void updateSubject(Subject subject) throws SQLException;
-    public void deleteSubject(Subject subject) throws SQLException;
-    public Subject getSubjectByName(String name) throws SQLException;
-    public Subject getSubjectByID(Long subjectID) throws SQLException;
-    public List getAllSubjects() throws SQLException;
-    public Collection getAllSubjectsByRequiredSkill(Skill skill) throws SQLException;
+    void addSubject(Subject subject) throws SQLException;
+
+    void updateSubject(Subject subject) throws SQLException;
+
+    void deleteSubject(Subject subject) throws SQLException;
+
+    Subject getSubjectByName(String name) throws SQLException;
+
+    Subject getSubjectByID(Long subjectID) throws SQLException;
+
+    List getAllSubjects() throws SQLException;
+
+    Collection getAllSubjectsByRequiredSkill(Skill skill) throws SQLException;
 }

@@ -7,13 +7,12 @@ import org.hibernate.Session;
 import util.HibernateUtil;
 
 import javax.swing.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class SkillDAOImp implements SkillDAO {
-    public void addSkill(Skill skill) throws SQLException {
+    public void addSkill(Skill skill) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -29,7 +28,7 @@ public class SkillDAOImp implements SkillDAO {
         }
     }
 
-    public void updateSkill(Skill skill) throws SQLException {
+    public void updateSkill(Skill skill) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -45,7 +44,7 @@ public class SkillDAOImp implements SkillDAO {
         }
     }
 
-    public void deleteSkill(Skill skill) throws SQLException {
+    public void deleteSkill(Skill skill) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -61,7 +60,7 @@ public class SkillDAOImp implements SkillDAO {
         }
     }
 
-    public Skill getSkillByName(String skillName) throws SQLException {
+    public Skill getSkillByName(String skillName) {
         Session session = null;
         Skill skill = null;
         try {
@@ -77,7 +76,7 @@ public class SkillDAOImp implements SkillDAO {
         return skill;
     }
 
-    public Collection getAllSkillsByProficiency(Proficiency proficiency) throws SQLException {
+    public Collection getAllSkillsByProficiency(Proficiency proficiency) {
         Session session = null;
         List skills;
         try{
@@ -92,7 +91,7 @@ public class SkillDAOImp implements SkillDAO {
         return skills;
     }
 
-    public Collection getAllSkills() throws SQLException {
+    public Collection getAllSkills() {
         Session session = null;
         List skills = new ArrayList<Skill>();
         try {

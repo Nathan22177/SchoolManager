@@ -8,13 +8,12 @@ import org.hibernate.Session;
 import util.HibernateUtil;
 
 import javax.swing.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class TeacherDAOImp implements TeacherDAO {
-    public void addTeacher(Teacher teacher) throws SQLException {
+    public void addTeacher(Teacher teacher) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -30,7 +29,7 @@ public class TeacherDAOImp implements TeacherDAO {
         }
     }
 
-    public void updateTeacher(Teacher teacher) throws SQLException {
+    public void updateTeacher(Teacher teacher) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -46,7 +45,7 @@ public class TeacherDAOImp implements TeacherDAO {
         }
     }
 
-    public void deleteTeacher(Teacher teacher) throws SQLException {
+    public void deleteTeacher(Teacher teacher) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -62,7 +61,7 @@ public class TeacherDAOImp implements TeacherDAO {
         }
     }
 
-    public Teacher getTeacherByID(Long teacherID) throws SQLException {
+    public Teacher getTeacherByID(Long teacherID) {
         Session session = null;
         Teacher teacher = null;
         try {
@@ -78,7 +77,7 @@ public class TeacherDAOImp implements TeacherDAO {
         return teacher;
     }
 
-    public Teacher getTeacherByLastName(String lastName) throws SQLException {
+    public Teacher getTeacherByLastName(String lastName) {
         Session session = null;
         Teacher teacher = null;
         try {
@@ -94,7 +93,7 @@ public class TeacherDAOImp implements TeacherDAO {
         return teacher;
     }
 
-    public Collection getAllTeachers() throws SQLException {
+    public Collection getAllTeachers() {
         Session session = null;
         List teachers = new ArrayList<Subject>();
         try {
@@ -110,10 +109,10 @@ public class TeacherDAOImp implements TeacherDAO {
         return teachers;
     }
 
-    public Collection getTeachersBySkill(Proficiency proficiency) throws SQLException {
+    public Collection getTeachersBySkill(Proficiency proficiency) {
         Session session = null;
         List teachers;
-        try{
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             teachers = session.createQuery("select TEACHER_ID from TEACHER_SKILLSET where SKILLS = :prof").setParameter("prof", proficiency).list();

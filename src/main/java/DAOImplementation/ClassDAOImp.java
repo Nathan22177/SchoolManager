@@ -8,14 +8,13 @@ import org.hibernate.Session;
 import util.HibernateUtil;
 
 import javax.swing.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class ClassDAOImp implements ClassDAO {
 
-    public void addClass(Class lesson) throws SQLException {
+    public void addClass(Class lesson) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -31,7 +30,7 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public void updateClass(Class lesson) throws SQLException {
+    public void updateClass(Class lesson) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -47,7 +46,7 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public void deleteClass(Class lesson) throws SQLException {
+    public void deleteClass(Class lesson) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -63,7 +62,7 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public Class getClassByID(Long classID) throws SQLException {
+    public Class getClassByID(Long classID) {
         Session session = null;
         Class lesson = null;
         try {
@@ -79,7 +78,7 @@ public class ClassDAOImp implements ClassDAO {
         return lesson;
     }
 
-    public Collection getAllClasses() throws SQLException {
+    public Collection getAllClasses() {
         Session session = null;
         List classes = new ArrayList<Class>();
         try {
@@ -95,7 +94,7 @@ public class ClassDAOImp implements ClassDAO {
         return classes;
     }
 
-    public Collection getClassesByTeacher(Teacher teacher) throws SQLException {
+    public Collection getClassesByTeacher(Teacher teacher) {
         Session session = null;
         List classes;
         try{
@@ -111,7 +110,7 @@ public class ClassDAOImp implements ClassDAO {
         return  classes;
     }
 
-    public Collection getClassesBySubject(Subject subject) throws SQLException {
+    public Collection getClassesBySubject(Subject subject) {
         Session session = null;
         List classes;
         try{
@@ -127,7 +126,7 @@ public class ClassDAOImp implements ClassDAO {
         return  classes;
     }
 
-    public java.util.Collection<Class> getClassesByStudentGroup(StudentGroup studentGroup) throws SQLException {
+    public java.util.Collection<Class> getClassesByStudentGroup(StudentGroup studentGroup) {
         Session session = null;
         List classes;
         try{

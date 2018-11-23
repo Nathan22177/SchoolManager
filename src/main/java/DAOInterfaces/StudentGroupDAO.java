@@ -7,12 +7,19 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 public interface StudentGroupDAO {
-    public void addStudentGroup(StudentGroup studentGroup) throws SQLException;
-    public void updateStudentGroup(StudentGroup studentGroup) throws SQLException;
-    public void deleteStudentGroup(StudentGroup studentGroup) throws SQLException;
-    public StudentGroup getGroupByID(Long groupID) throws SQLException;
-    public Collection getAllStudentGroups() throws SQLException;
-    public Collection getAllStudentGroupsByYear(int year) throws SQLException;
-    public Collection getAllStudentGroupsByFlow(String flow) throws SQLException;
-    public Collection getAllStudentGroupsBySubject(Subject subject) throws SQLException;
+    void addStudentGroup(StudentGroup studentGroup) throws SQLException;
+
+    void updateStudentGroup(StudentGroup studentGroup) throws SQLException;
+
+    void deleteStudentGroup(StudentGroup studentGroup) throws SQLException;
+
+    StudentGroup getGroupByID(Long groupID) throws SQLException;
+
+    Collection getAllStudentGroups() throws SQLException;
+
+    Collection getAllStudentGroupsByYear(int year) throws SQLException;
+
+    Collection getAllStudentGroupsByFlow(String flow) throws SQLException;
+
+    Collection getAllStudentGroupsBySubject(Subject subject) throws SQLException;
 }

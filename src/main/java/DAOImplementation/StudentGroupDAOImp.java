@@ -7,13 +7,12 @@ import org.hibernate.Session;
 import util.HibernateUtil;
 
 import javax.swing.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class StudentGroupDAOImp implements StudentGroupDAO {
-    public void addStudentGroup(StudentGroup studentGroup) throws SQLException {
+    public void addStudentGroup(StudentGroup studentGroup) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -29,7 +28,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         }
     }
 
-    public void updateStudentGroup(StudentGroup studentGroup) throws SQLException {
+    public void updateStudentGroup(StudentGroup studentGroup) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -45,7 +44,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         }
     }
 
-    public void deleteStudentGroup(StudentGroup studentGroup) throws SQLException {
+    public void deleteStudentGroup(StudentGroup studentGroup) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -61,7 +60,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         }
     }
 
-    public StudentGroup getGroupByID(Long groupID) throws SQLException {
+    public StudentGroup getGroupByID(Long groupID) {
         Session session = null;
         StudentGroup studentGroup = null;
         try {
@@ -77,7 +76,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         return studentGroup;
     }
 
-    public Collection getAllStudentGroups() throws SQLException {
+    public Collection getAllStudentGroups() {
         Session session = null;
         List groups = new ArrayList<Class>();
         try {
@@ -93,10 +92,10 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         return groups;
     }
 
-    public Collection getAllStudentGroupsByYear(int year) throws SQLException {
+    public Collection getAllStudentGroupsByYear(int year) {
         Session session = null;
         List groups;
-        try{
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             groups = session.createQuery("from STUDENT_GROUP where GRADE = :year").setParameter("year", year).list();
@@ -108,10 +107,10 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         return groups;
     }
 
-    public Collection getAllStudentGroupsByFlow(String flow) throws SQLException {
+    public Collection getAllStudentGroupsByFlow(String flow) {
         Session session = null;
         List groups;
-        try{
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             groups = session.createQuery("from STUDENT_GROUP where STUDENT_FLOW = :flow").setParameter("flow", flow).list();
@@ -123,10 +122,10 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         return groups;
     }
 
-    public Collection getAllStudentGroupsBySubject(Subject subject) throws SQLException {
+    public Collection getAllStudentGroupsBySubject(Subject subject) {
         Session session = null;
         List classes;
-        try{
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             Long subjectID = subject.getSubjectID();

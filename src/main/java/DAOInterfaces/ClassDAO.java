@@ -10,12 +10,19 @@ import java.util.Collection;
 
 
 public interface ClassDAO {
-    public void addClass(Class lesson) throws SQLException;
-    public void updateClass(Class lesson) throws SQLException;
-    public void deleteClass(Class lesson) throws SQLException;
-    public Class getClassByID(Long classID) throws SQLException;
-    public java.util.Collection getAllClasses() throws SQLException;
-    public Collection getClassesByTeacher(Teacher teacher) throws SQLException;
-    public Collection getClassesBySubject(Subject subject) throws SQLException;
-    public java.util.Collection<Class> getClassesByStudentGroup(StudentGroup studentGroup) throws SQLException;
+    void addClass(Class lesson) throws SQLException;
+
+    void updateClass(Class lesson) throws SQLException;
+
+    void deleteClass(Class lesson) throws SQLException;
+
+    Class getClassByID(Long classID) throws SQLException;
+
+    java.util.Collection getAllClasses() throws SQLException;
+
+    Collection getClassesByTeacher(Teacher teacher) throws SQLException;
+
+    Collection getClassesBySubject(Subject subject) throws SQLException;
+
+    java.util.Collection<Class> getClassesByStudentGroup(StudentGroup studentGroup) throws SQLException;
 }

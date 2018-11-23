@@ -7,13 +7,12 @@ import org.hibernate.Session;
 import util.HibernateUtil;
 
 import javax.swing.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class SubjectDAOImp implements SubjectDAO {
-    public void addSubject(Subject subject) throws SQLException {
+    public void addSubject(Subject subject) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -29,7 +28,7 @@ public class SubjectDAOImp implements SubjectDAO {
         }
     }
 
-    public void updateSubject(Subject subject) throws SQLException {
+    public void updateSubject(Subject subject) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -45,7 +44,7 @@ public class SubjectDAOImp implements SubjectDAO {
         }
     }
 
-    public void deleteSubject(Subject subject) throws SQLException {
+    public void deleteSubject(Subject subject) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -61,7 +60,7 @@ public class SubjectDAOImp implements SubjectDAO {
         }
     }
 
-    public Subject getSubjectByName(String name) throws SQLException {
+    public Subject getSubjectByName(String name) {
         Session session = null;
         Subject subject = null;
         try {
@@ -77,7 +76,7 @@ public class SubjectDAOImp implements SubjectDAO {
         return subject;
     }
 
-    public Subject getSubjectByID(Long subjectID) throws SQLException {
+    public Subject getSubjectByID(Long subjectID) {
         Session session = null;
         Subject subject = null;
         try {
@@ -93,7 +92,7 @@ public class SubjectDAOImp implements SubjectDAO {
         return subject;
     }
 
-    public List getAllSubjects() throws SQLException {
+    public List getAllSubjects() {
         Session session = null;
         List subjects = new ArrayList<Subject>();
         try {
@@ -109,10 +108,10 @@ public class SubjectDAOImp implements SubjectDAO {
         return subjects;
     }
 
-    public Collection getAllSubjectsByRequiredSkill(Skill skill) throws SQLException {
+    public Collection getAllSubjectsByRequiredSkill(Skill skill) {
         Session session = null;
         List subjects;
-        try{
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             String skillName = skill.getName();
