@@ -11,13 +11,14 @@ public class StudentGroup {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "GROUP_ID", length = 10, nullable = false)
     private Long groupID;
+
     @Column(name = "GRADE", length = 5)
     private int year;
     @Column(name = "STUDENT_FLOW", length = 5)
     private String flow;
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "GROUP_COURSES", joinColumns = {@JoinColumn(name = "GROUP_ID")}, inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID")})
-    private Set courses = new HashSet();
+    private Set<Subject> subjects = new HashSet<Subject>();
 
     public StudentGroup() {
 
@@ -44,15 +45,13 @@ public class StudentGroup {
         return flow;
     }
 
-    public void setFlow(String flow) {
-        this.flow = flow;
+    public void setFlow(String flow) { this.flow = flow; }
+
+    public Set getSubjects() {
+        return subjects;
     }
 
-    public Set getCourses() {
-        return courses;
-    }
-
-    public void setCourses(Set courses) {
-        this.courses = courses;
+    public void setSubjects(Set subjects) {
+        this.subjects = subjects;
     }
 }

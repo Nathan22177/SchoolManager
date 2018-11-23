@@ -1,6 +1,7 @@
 package logic;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,7 @@ public class Class {
     private Long classID;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinTable(name = "ATTENDING_GROUPS", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "GROUP_ID")})
-    private Set attendingGroups;
+    private Set<StudentGroup> attendingGroups = new HashSet<StudentGroup>();
 
     public Class() {
     }
@@ -44,7 +45,6 @@ public class Class {
     public void setTeacherID(Long teacherID) {
         this.teacherID = teacherID;
     }
-
 
     public Long getClassID() {
         return classID;
