@@ -14,10 +14,6 @@ public class Skill {
     @Column(name = "SKILL_ID", length = 10, nullable = false)
     private Long skillID;
 
-    public Skill() {
-    }
-
-
     public Long getId() {
         return skillID;
     }

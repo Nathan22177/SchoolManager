@@ -21,10 +21,6 @@ public class Teacher {
     @JoinTable(name = "TEACHER_SKILLSET", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
     private Set<Skill> skills = new HashSet<Skill>();
 
-    public Teacher() {
-
-    }
-
     public void setSkills(Set skills){
         this.skills = skills;
     }

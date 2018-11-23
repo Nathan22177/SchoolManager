@@ -14,12 +14,6 @@ public class Subject {
     @Column(name = "REQUIRED_PROFICIENCY")
     private Proficiency requiredProficiency; //logic.Skill teacher has to have to be able to teach this subject
 
-
-    public Subject(){
-
-    }
-
-
     public Long getSubjectID() {
         return subjectID;
     }

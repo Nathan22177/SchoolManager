@@ -20,11 +20,6 @@ public class StudentGroup {
     @JoinTable(name = "GROUP_COURSES", joinColumns = {@JoinColumn(name = "GROUP_ID")}, inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID")})
     private Set<Subject> subjects = new HashSet<Subject>();
 
-    public StudentGroup() {
-
-    }
-
-
     public Long getGroupID() {
         return groupID;
     }

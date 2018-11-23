@@ -19,9 +19,6 @@ public class Class {
     @JoinTable(name = "ATTENDING_GROUPS", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "GROUP_ID")})
     private Set<StudentGroup> attendingGroups = new HashSet<StudentGroup>();
 
-    public Class() {
-    }
-
     public Set getAttendingGroups() {
         return attendingGroups;
     }
