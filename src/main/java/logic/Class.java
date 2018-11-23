@@ -6,15 +6,21 @@ import java.util.Set;
 @Entity
 @Table(name = "CLASS")
 public class Class {
+    @Column(name = "TEACHER_ID")
     private Long teacherID;
+    @Column(name = "SUBJECT_ID")
     private Long subjectID;
+    @Id
+    @GeneratedValue
+    @Column(name = "CLASS_ID")
     private Long classID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "ATTENDING_GROUPS", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "GROUP_ID")})
     private Set attendingGroups;
 
     public Class() {
     }
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "ATTENDING_GROUPS", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "GROUP_ID")})
+
     public Set getAttendingGroups() {
         return attendingGroups;
     }
@@ -23,7 +29,6 @@ public class Class {
         this.attendingGroups = attendingGroups;
     }
 
-    @Column(name = "SUBJECT_ID")
     public Long getSubjectID() {
         return subjectID;
     }
@@ -32,17 +37,15 @@ public class Class {
         this.subjectID = subjectID;
     }
 
-    @Column(name = "TEACHER_ID")
     public Long getTeacherID() {
         return teacherID;
     }
+
     public void setTeacherID(Long teacherID) {
         this.teacherID = teacherID;
     }
 
-    @Id
-    @GeneratedValue
-    @Column(name = "CLASS_ID")
+
     public Long getClassID() {
         return classID;
     }

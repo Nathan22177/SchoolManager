@@ -11,7 +11,6 @@ public class StudentGroup {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "GROUP_ID", length = 10, nullable = false)
     private Long groupID;
-
     @Column(name = "GRADE", length = 5)
     private int year;
     @Column(name = "STUDENT_FLOW", length = 5)

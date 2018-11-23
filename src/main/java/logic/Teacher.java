@@ -7,11 +7,18 @@ import java.util.Set;
 @Entity
 @Table(name = "TEACHER")
 public class Teacher {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name ="TEACHER_ID", length = 10, nullable = false)
     private Long id;
+    @Column(name = "FIRST_NAME", length = 20)
     private String firstName;
+    @Column(name = "LAST_NAME", length = 20)
     private String lastName;
+    @Column(name = "AGE", length = 5)
     private int age;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "TEACHER_SKILLSET", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
     private Set skills = new HashSet();
 
     public Teacher() {
@@ -22,15 +29,10 @@ public class Teacher {
         this.skills = skills;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "TEACHER_SKILLSET", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
     public Set getSkills(){
         return skills;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="TEACHER_ID", length = 10, nullable = false)
     public Long getId() {
         return id;
     }
@@ -39,7 +41,6 @@ public class Teacher {
         this.id = id;
     }
 
-    @Column(name = "FIRST_NAME", length = 20)
     public String getFirstName() {
         return firstName;
     }
@@ -48,7 +49,6 @@ public class Teacher {
         this.firstName = firstName;
     }
 
-    @Column(name = "LAST_NAME", length = 20)
     public String getLastName() {
         return lastName;
     }
@@ -57,7 +57,7 @@ public class Teacher {
         this.lastName = lastName;
     }
 
-    @Column(name = "AGE", length = 5)
+
     public int getAge() {
         return age;
     }
