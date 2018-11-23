@@ -3,7 +3,6 @@ package DAOInterfaces;
 import logic.StudentGroup;
 import logic.Subject;
 
-import java.security.PublicKey;
 import java.sql.SQLException;
 import java.util.Collection;
 

@@ -1,11 +1,12 @@
 package DAOInterfaces;
 
-import com.mysql.cj.xdevapi.Collection;
+
 import logic.StudentGroup;
 import logic.Subject;
 import logic.Teacher;
 
 import java.sql.SQLException;
+import java.util.Collection;
 
 
 public interface ClassDAO {

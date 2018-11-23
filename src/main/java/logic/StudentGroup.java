@@ -43,7 +43,7 @@ public class StudentGroup {
         this.flow = flow;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "GROUP_COURSES", joinColumns = {@JoinColumn(name = "GROUP_ID")}, inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID")})
     public Set getCourses() {
         return courses;

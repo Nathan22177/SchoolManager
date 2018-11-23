@@ -13,7 +13,7 @@ public class Class {
 
     public Class() {
     }
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinTable(name = "ATTENDING_GROUPS", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "GROUP_ID")})
     public Set getAttendingGroups() {
         return attendingGroups;
