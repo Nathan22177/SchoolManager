@@ -15,7 +15,7 @@ public class Class {
     @GeneratedValue
     @Column(name = "CLASS_ID")
     private Long classID;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = StudentGroup.class)
     @JoinTable(name = "ATTENDING_GROUPS", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "GROUP_ID")})
     private Set<StudentGroup> attendingGroups = new HashSet<StudentGroup>();
 
