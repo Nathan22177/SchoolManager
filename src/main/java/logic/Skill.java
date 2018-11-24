@@ -1,8 +1,11 @@
 package logic;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "SKILL")
 public class Skill {
 
@@ -16,26 +19,4 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SKILL_ID", length = 10, nullable = false)
     private Long skillID;
-
-    public Long getId() {
-        return skillID;
-    }
-
-    public void setSkillID(Long skillID) { this.skillID = skillID; }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Proficiency getSkill() {
-        return skill;
-    }
-
-    public void setSkill(Proficiency skill) {
-        this.skill = skill;
-    }
 }

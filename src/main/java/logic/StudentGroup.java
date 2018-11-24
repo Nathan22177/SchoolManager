@@ -1,10 +1,13 @@
 package logic;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Data
 @Table(name = "STUDENT_GROUP")
 public class StudentGroup {
 
@@ -23,33 +26,4 @@ public class StudentGroup {
     @JoinTable(name = "GROUP_COURSES", joinColumns = {@JoinColumn(name = "GROUP_ID")}, inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID")})
     private Set<Subject> subjects = new HashSet<>();
 
-    public Long getGroupID() {
-        return groupID;
-    }
-
-    public void setGroupID(Long groupID) {
-        this.groupID = groupID;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public String getFlow() {
-        return flow;
-    }
-
-    public void setFlow(String flow) { this.flow = flow; }
-
-    public Set getSubjects() {
-        return subjects;
-    }
-
-    public void setSubjects(Set subjects) {
-        this.subjects = subjects;
-    }
 }
