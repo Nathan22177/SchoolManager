@@ -25,5 +25,4 @@ public class LearnClass {
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = StudentGroup.class)
     @JoinTable(name = "ATTENDING_GROUPS", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "GROUP_ID")})
     private Set<StudentGroup> attendingGroups = new HashSet<>();
-
 }
