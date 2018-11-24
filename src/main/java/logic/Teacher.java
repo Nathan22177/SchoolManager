@@ -14,19 +14,19 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="TEACHER_ID", length = 10, nullable = false)
-    private Long id;
+    private Long teaherID;
 
     @Column(name = "FIRST_NAME", length = 20)
-    private String firstName;
+    private String teacherFirstName;
 
     @Column(name = "LAST_NAME", length = 20)
-    private String lastName;
+    private String teacherLastName;
 
     @Column(name = "AGE", length = 5)
-    private int age;
+    private int teacherAge;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "TEACHER_SKILLSET", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
-    private Set<Skill> skills = new HashSet<>();
+    private Set<Skill> teacherSkills = new HashSet<>();
 
 }

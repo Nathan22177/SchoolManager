@@ -1,5 +1,8 @@
 package logic;
 
+import lombok.Data;
+
+@Data
 public enum Proficiency {
     NATIVE_LANGUAGE,        //logic.Teacher is able to teach native language;
     FOREIGN_LANGUAGE,       //to teach foreign language;

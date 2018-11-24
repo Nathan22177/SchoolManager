@@ -1,5 +1,6 @@
 package DAOImplementation;
 
+
 import DAOInterfaces.LearnClassDAO;
 import logic.LearnClass;
 import logic.StudentGroup;
@@ -109,7 +110,7 @@ public class LearnClassDAOImp implements LearnClassDAO {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            Long teacherID = teacher.getId();
+            Long teacherID = teacher.getTeaherID();
             classes = session.createQuery("from CLASS where TEACHER_ID = :teacherID").setParameter("teacherID", teacherID).list();
         } finally {
             if (session != null && session.isOpen()) {
