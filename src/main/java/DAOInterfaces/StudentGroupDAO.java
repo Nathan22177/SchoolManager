@@ -3,8 +3,7 @@ package DAOInterfaces;
 import logic.StudentGroup;
 import logic.Subject;
 
-import java.sql.SQLException;
-import java.util.Collection;
+import java.util.List;
 
 public interface StudentGroupDAO {
     void addStudentGroup(StudentGroup studentGroup);
@@ -15,11 +14,11 @@ public interface StudentGroupDAO {
 
     StudentGroup getGroupByID(Long groupID);
 
-    Collection getAllStudentGroups();
+    List getAllStudentGroups();
 
-    Collection getAllStudentGroupsByYear(int year);
+    List getAllStudentGroupsByYear(int year);
 
-    Collection getAllStudentGroupsByFlow(String flow);
+    List getAllStudentGroupsByFlow(String flow);
 
-    Collection getAllStudentGroupsBySubject(Subject subject);
+    List getAllStudentGroupsBySubject(Subject subject);
 }

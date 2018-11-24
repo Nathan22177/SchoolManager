@@ -3,8 +3,7 @@ package DAOInterfaces;
 import logic.Proficiency;
 import logic.Skill;
 
-import java.sql.SQLException;
-import java.util.Collection;
+import java.util.List;
 
 public interface SkillDAO {
     void addSkill(Skill skill);
@@ -15,7 +14,7 @@ public interface SkillDAO {
 
     Skill getSkillByName(String skillName);
 
-    Collection getAllSkillsByProficiency(Proficiency proficiency);
+    List getAllSkillsByProficiency(Proficiency proficiency);
 
-    Collection getAllSkills();
+    List getAllSkills();
 }

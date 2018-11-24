@@ -18,11 +18,11 @@ public interface LearnClassDAO {
 
     LearnClass getLearnClassByID(Long learnClassID);
 
-    List<LearnClass> getAllLearnClasses();
+    List getAllLearnClasses();
 
-    List<LearnClass> getLearnClassesByTeacher(Teacher teacher);
+    List getLearnClassesByTeacher(Teacher teacher);
 
-    List<LearnClass> getLearnClassesBySubject(Subject subject);
+    List getLearnClassesBySubject(Subject subject);
 
-    List<LearnClass> getLearnClassesByStudentGroup(StudentGroup studentGroup);
+    List getLearnClassesByStudentGroup(StudentGroup studentGroup);
 }

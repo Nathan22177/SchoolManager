@@ -6,12 +6,13 @@ import logic.Subject;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.List;
 
 public class SubjectDAOImp implements SubjectDAO {
+    
+    @Override
     public void addSubject(Subject subject) {
         Session session = null;
         try {
@@ -28,6 +29,7 @@ public class SubjectDAOImp implements SubjectDAO {
         }
     }
 
+    @Override
     public void updateSubject(Subject subject) {
         Session session = null;
         try {
@@ -44,6 +46,7 @@ public class SubjectDAOImp implements SubjectDAO {
         }
     }
 
+    @Override
     public void deleteSubject(Subject subject) {
         Session session = null;
         try {
@@ -60,6 +63,7 @@ public class SubjectDAOImp implements SubjectDAO {
         }
     }
 
+    @Override
     public Subject getSubjectByName(String name) {
         Session session = null;
         Subject subject = null;
@@ -76,6 +80,7 @@ public class SubjectDAOImp implements SubjectDAO {
         return subject;
     }
 
+    @Override
     public Subject getSubjectByID(Long subjectID) {
         Session session = null;
         Subject subject = null;
@@ -92,6 +97,7 @@ public class SubjectDAOImp implements SubjectDAO {
         return subject;
     }
 
+    @Override
     public List getAllSubjects() {
         Session session = null;
         List subjects = new ArrayList<Subject>();
@@ -108,7 +114,8 @@ public class SubjectDAOImp implements SubjectDAO {
         return subjects;
     }
 
-    public Collection getAllSubjectsByRequiredSkill(Skill skill) {
+    @Override
+    public List getAllSubjectsByRequiredSkill(Skill skill) {
         Session session = null;
         List subjects;
         try {

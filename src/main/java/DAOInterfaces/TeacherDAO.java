@@ -3,8 +3,7 @@ package DAOInterfaces;
 import logic.Proficiency;
 import logic.Teacher;
 
-import java.sql.SQLException;
-import java.util.Collection;
+import java.util.List;
 
 public interface TeacherDAO {
     void addTeacher(Teacher teacher);
@@ -17,7 +16,7 @@ public interface TeacherDAO {
 
     Teacher getTeacherByLastName(String lastName);
 
-    Collection getAllTeachers();
+    List getAllTeachers();
 
-    Collection getTeachersBySkill(Proficiency proficiency);
+    List getTeachersBySkill(Proficiency proficiency);
 }

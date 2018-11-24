@@ -6,12 +6,13 @@ import logic.Skill;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.List;
 
 public class SkillDAOImp implements SkillDAO {
+
+    @Override
     public void addSkill(Skill skill) {
         Session session = null;
         try {
@@ -28,6 +29,7 @@ public class SkillDAOImp implements SkillDAO {
         }
     }
 
+    @Override
     public void updateSkill(Skill skill) {
         Session session = null;
         try {
@@ -44,6 +46,7 @@ public class SkillDAOImp implements SkillDAO {
         }
     }
 
+    @Override
     public void deleteSkill(Skill skill) {
         Session session = null;
         try {
@@ -60,6 +63,7 @@ public class SkillDAOImp implements SkillDAO {
         }
     }
 
+    @Override
     public Skill getSkillByName(String skillName) {
         Session session = null;
         Skill skill = null;
@@ -76,10 +80,11 @@ public class SkillDAOImp implements SkillDAO {
         return skill;
     }
 
-    public Collection getAllSkillsByProficiency(Proficiency proficiency) {
+    @Override
+    public List getAllSkillsByProficiency(Proficiency proficiency) {
         Session session = null;
         List skills;
-        try{
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             skills = session.createQuery("from SKILLS where SKILL_REQUIRED = :prof").setParameter("prof", proficiency).list();
@@ -91,7 +96,8 @@ public class SkillDAOImp implements SkillDAO {
         return skills;
     }
 
-    public Collection getAllSkills() {
+    @Override
+    public List getAllSkills() {
         Session session = null;
         List skills = new ArrayList<Skill>();
         try {

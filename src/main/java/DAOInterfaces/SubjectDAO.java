@@ -3,8 +3,6 @@ package DAOInterfaces;
 import logic.Skill;
 import logic.Subject;
 
-import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 public interface SubjectDAO {
@@ -20,5 +18,5 @@ public interface SubjectDAO {
 
     List getAllSubjects();
 
-    Collection getAllSubjectsByRequiredSkill(Skill skill);
+    List getAllSubjectsByRequiredSkill(Skill skill);
 }

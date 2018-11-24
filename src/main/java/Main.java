@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         Collection classes = Factory.getInstance().getLearnClassDAO().getAllLearnClasses();
 
         System.out.println("Все занятия");

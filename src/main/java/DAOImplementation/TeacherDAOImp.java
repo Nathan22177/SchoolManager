@@ -7,12 +7,13 @@ import logic.Teacher;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.List;
 
 public class TeacherDAOImp implements TeacherDAO {
+    
+    @Override
     public void addTeacher(Teacher teacher) {
         Session session = null;
         try {
@@ -29,6 +30,7 @@ public class TeacherDAOImp implements TeacherDAO {
         }
     }
 
+    @Override
     public void updateTeacher(Teacher teacher) {
         Session session = null;
         try {
@@ -45,6 +47,7 @@ public class TeacherDAOImp implements TeacherDAO {
         }
     }
 
+    @Override
     public void deleteTeacher(Teacher teacher) {
         Session session = null;
         try {
@@ -61,6 +64,7 @@ public class TeacherDAOImp implements TeacherDAO {
         }
     }
 
+    @Override
     public Teacher getTeacherByID(Long teacherID) {
         Session session = null;
         Teacher teacher = null;
@@ -77,6 +81,7 @@ public class TeacherDAOImp implements TeacherDAO {
         return teacher;
     }
 
+    @Override
     public Teacher getTeacherByLastName(String lastName) {
         Session session = null;
         Teacher teacher = null;
@@ -93,7 +98,8 @@ public class TeacherDAOImp implements TeacherDAO {
         return teacher;
     }
 
-    public Collection getAllTeachers() {
+    @Override
+    public List getAllTeachers() {
         Session session = null;
         List teachers = new ArrayList<Subject>();
         try {
@@ -109,7 +115,8 @@ public class TeacherDAOImp implements TeacherDAO {
         return teachers;
     }
 
-    public Collection getTeachersBySkill(Proficiency proficiency) {
+    @Override
+    public List getTeachersBySkill(Proficiency proficiency) {
         Session session = null;
         List teachers;
         try {

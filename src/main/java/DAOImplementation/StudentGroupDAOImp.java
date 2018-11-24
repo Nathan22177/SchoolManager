@@ -6,12 +6,13 @@ import logic.Subject;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.List;
 
 public class StudentGroupDAOImp implements StudentGroupDAO {
+    
+    @Override
     public void addStudentGroup(StudentGroup studentGroup) {
         Session session = null;
         try {
@@ -27,7 +28,8 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
             }
         }
     }
-
+    
+    @Override
     public void updateStudentGroup(StudentGroup studentGroup) {
         Session session = null;
         try {
@@ -44,6 +46,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         }
     }
 
+    @Override
     public void deleteStudentGroup(StudentGroup studentGroup) {
         Session session = null;
         try {
@@ -60,6 +63,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         }
     }
 
+    @Override
     public StudentGroup getGroupByID(Long groupID) {
         Session session = null;
         StudentGroup studentGroup = null;
@@ -76,7 +80,8 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         return studentGroup;
     }
 
-    public Collection getAllStudentGroups() {
+    @Override
+    public List getAllStudentGroups() {
         Session session = null;
         List groups = new ArrayList<Class>();
         try {
@@ -92,7 +97,8 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         return groups;
     }
 
-    public Collection getAllStudentGroupsByYear(int year) {
+    @Override
+    public List getAllStudentGroupsByYear(int year) {
         Session session = null;
         List groups;
         try {
@@ -107,7 +113,8 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         return groups;
     }
 
-    public Collection getAllStudentGroupsByFlow(String flow) {
+    @Override
+    public List getAllStudentGroupsByFlow(String flow) {
         Session session = null;
         List groups;
         try {
@@ -122,7 +129,8 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         return groups;
     }
 
-    public Collection getAllStudentGroupsBySubject(Subject subject) {
+    @Override
+    public List getAllStudentGroupsBySubject(Subject subject) {
         Session session = null;
         List classes;
         try {

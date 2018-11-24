@@ -12,7 +12,7 @@ public class LearnClass {
     @Column(name = "SUBJECT_ID")
     private Long subjectID;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CLASS_ID")
     private Long learnClassID;
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = StudentGroup.class)

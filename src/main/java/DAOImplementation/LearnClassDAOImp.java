@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,9 +83,9 @@ public class LearnClassDAOImp implements LearnClassDAO {
     }
 
     @Override
-    public List<LearnClass> getAllLearnClasses() {
+    public List getAllLearnClasses() {
         Session session = null;
-        List<LearnClass> classes = new ArrayList<>();
+        List classes = new ArrayList<>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             String selectHql = "FROM LearnClass";
