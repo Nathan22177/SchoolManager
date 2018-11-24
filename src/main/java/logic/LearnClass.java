@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "CLASS")
-public class Class {
+@Table(name = "LEARN_CLASS")
+public class LearnClass {
     @Column(name = "TEACHER_ID")
     private Long teacherID;
     @Column(name = "SUBJECT_ID")
@@ -14,10 +14,10 @@ public class Class {
     @Id
     @GeneratedValue
     @Column(name = "CLASS_ID")
-    private Long classID;
+    private Long learnClassID;
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = StudentGroup.class)
     @JoinTable(name = "ATTENDING_GROUPS", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "GROUP_ID")})
-    private Set<StudentGroup> attendingGroups = new HashSet<StudentGroup>();
+    private Set<StudentGroup> attendingGroups = new HashSet<>();
 
     public Set getAttendingGroups() {
         return attendingGroups;
@@ -43,11 +43,11 @@ public class Class {
         this.teacherID = teacherID;
     }
 
-    public Long getClassID() {
-        return classID;
+    public Long getLearnClassID() {
+        return learnClassID;
     }
 
-    public void setClassID(Long classID) {
-        this.classID = classID;
+    public void setLearnClassID(Long learnClassID) {
+        this.learnClassID = learnClassID;
     }
 }

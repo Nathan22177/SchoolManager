@@ -1,20 +1,22 @@
 package DAOImplementation;
 
-import DAOInterfaces.ClassDAO;
+import DAOInterfaces.LearnClassDAO;
+import logic.LearnClass;
 import logic.StudentGroup;
 import logic.Subject;
 import logic.Teacher;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import util.HibernateUtil;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-public class ClassDAOImp implements ClassDAO {
+public class LearnClassDAOImp implements LearnClassDAO {
 
-    public void addClass(Class lesson) {
+    @Override
+    public void addLearnClass(LearnClass lesson) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -22,7 +24,7 @@ public class ClassDAOImp implements ClassDAO {
             session.save(lesson);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при добавлении урока", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -30,7 +32,8 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public void updateClass(Class lesson) {
+    @Override
+    public void updateLearnClass(LearnClass lesson) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -38,7 +41,7 @@ public class ClassDAOImp implements ClassDAO {
             session.update(lesson);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при обновлении урока", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -46,7 +49,8 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public void deleteClass(Class lesson) {
+    @Override
+    public void deleteLearnClass(LearnClass lesson) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -54,7 +58,7 @@ public class ClassDAOImp implements ClassDAO {
             session.delete(lesson);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при удалении урока", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -62,14 +66,15 @@ public class ClassDAOImp implements ClassDAO {
         }
     }
 
-    public Class getClassByID(Long classID) {
+    @Override
+    public LearnClass getLearnClassByID(Long learnClassID) {
         Session session = null;
-        Class lesson = null;
+        LearnClass lesson = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            lesson = (Class) session.load(Class.class, classID);
+            lesson = session.load(LearnClass.class, learnClassID);
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при поиске урока по идентификатору", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -78,26 +83,31 @@ public class ClassDAOImp implements ClassDAO {
         return lesson;
     }
 
-    public Collection getAllClasses() {
+    @Override
+    public List<LearnClass> getAllLearnClasses() {
         Session session = null;
-        List classes = new ArrayList<Class>();
+        List<LearnClass> classes = new ArrayList<>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            classes = session.createQuery("from CLASS", Class.class).list();
+            String selectHql = "FROM LearnClass";
+            Query query = session.createQuery(selectHql);
+            classes = query.list();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при выводе списка уроков", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
+
         }
         return classes;
     }
 
-    public Collection getClassesByTeacher(Teacher teacher) {
+    @Override
+    public List<LearnClass> getLearnClassesByTeacher(Teacher teacher) {
         Session session = null;
-        List classes;
-        try{
+        List<LearnClass> classes;
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             Long teacherID = teacher.getId();
@@ -107,13 +117,14 @@ public class ClassDAOImp implements ClassDAO {
                 session.close();
             }
         }
-        return  classes;
+        return classes;
     }
 
-    public Collection getClassesBySubject(Subject subject) {
+    @Override
+    public List<LearnClass> getLearnClassesBySubject(Subject subject) {
         Session session = null;
-        List classes;
-        try{
+        List<LearnClass> classes;
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             Long subjectID = subject.getSubjectID();
@@ -123,13 +134,14 @@ public class ClassDAOImp implements ClassDAO {
                 session.close();
             }
         }
-        return  classes;
+        return classes;
     }
 
-    public java.util.Collection<Class> getClassesByStudentGroup(StudentGroup studentGroup) {
+    @Override
+    public List<LearnClass> getLearnClassesByStudentGroup(StudentGroup studentGroup) {
         Session session = null;
-        List classes;
-        try{
+        List<LearnClass> classes;
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             Long groupID = studentGroup.getGroupID();

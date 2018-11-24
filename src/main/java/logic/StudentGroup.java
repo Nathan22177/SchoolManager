@@ -18,7 +18,7 @@ public class StudentGroup {
     private String flow;
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "GROUP_COURSES", joinColumns = {@JoinColumn(name = "GROUP_ID")}, inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID")})
-    private Set<Subject> subjects = new HashSet<Subject>();
+    private Set<Subject> subjects = new HashSet<>();
 
     public Long getGroupID() {
         return groupID;

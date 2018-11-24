@@ -7,17 +7,17 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 public interface TeacherDAO {
-    void addTeacher(Teacher teacher) throws SQLException;
+    void addTeacher(Teacher teacher);
 
-    void updateTeacher(Teacher teacher) throws SQLException;
+    void updateTeacher(Teacher teacher);
 
-    void deleteTeacher(Teacher teacher) throws SQLException;
+    void deleteTeacher(Teacher teacher);
 
-    Teacher getTeacherByID(Long teacherID) throws SQLException;
+    Teacher getTeacherByID(Long teacherID);
 
-    Teacher getTeacherByLastName(String lastName) throws SQLException;
+    Teacher getTeacherByLastName(String lastName);
 
-    Collection getAllTeachers() throws SQLException;
+    Collection getAllTeachers();
 
-    Collection getTeachersBySkill(Proficiency proficiency) throws SQLException;
+    Collection getTeachersBySkill(Proficiency proficiency);
 }

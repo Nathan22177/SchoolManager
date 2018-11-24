@@ -20,7 +20,7 @@ public class SkillDAOImp implements SkillDAO {
             session.save(skill);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при добавлении навыка", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -36,7 +36,7 @@ public class SkillDAOImp implements SkillDAO {
             session.update(skill);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при обновлении навыка", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -52,7 +52,7 @@ public class SkillDAOImp implements SkillDAO {
             session.delete(skill);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при удалении навыка", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -67,7 +67,7 @@ public class SkillDAOImp implements SkillDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             skill = session.load(Skill.class, skillName);
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при поиске навыка по наименованию", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -98,7 +98,7 @@ public class SkillDAOImp implements SkillDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             skills = session.createQuery("from SKILL", Skill.class).list();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при выводе списка навыков", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

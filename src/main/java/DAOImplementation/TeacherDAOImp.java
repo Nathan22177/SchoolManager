@@ -21,7 +21,7 @@ public class TeacherDAOImp implements TeacherDAO {
             session.save(teacher);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при добавлении преподавателя", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -37,7 +37,7 @@ public class TeacherDAOImp implements TeacherDAO {
             session.update(teacher);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при обновлении преподавателя", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -53,7 +53,7 @@ public class TeacherDAOImp implements TeacherDAO {
             session.delete(teacher);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при удалении преподавателя", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -68,7 +68,7 @@ public class TeacherDAOImp implements TeacherDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             teacher = session.load(Teacher.class, teacherID);
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при поиске преподавателя по идентификатору", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -84,7 +84,7 @@ public class TeacherDAOImp implements TeacherDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             teacher = session.load(Teacher.class, lastName);
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при поиске преподавателя по фамиилд", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -100,7 +100,7 @@ public class TeacherDAOImp implements TeacherDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             teachers = session.createQuery("from TEACHER", Teacher.class).list();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при выводе списка всех преподавателей", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

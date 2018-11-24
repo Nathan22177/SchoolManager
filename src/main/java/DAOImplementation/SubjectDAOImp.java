@@ -20,7 +20,7 @@ public class SubjectDAOImp implements SubjectDAO {
             session.save(subject);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при добавлении предмета", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -36,7 +36,7 @@ public class SubjectDAOImp implements SubjectDAO {
             session.update(subject);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при изменении предмета", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -52,7 +52,7 @@ public class SubjectDAOImp implements SubjectDAO {
             session.delete(subject);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при удалении предмета", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -67,7 +67,7 @@ public class SubjectDAOImp implements SubjectDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             subject = session.load(Subject.class, name);
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при поиске предмета по наименованию", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -83,7 +83,7 @@ public class SubjectDAOImp implements SubjectDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             subject = session.load(Subject.class, subjectID);
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при поиске предмета по идентификатору", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -99,7 +99,7 @@ public class SubjectDAOImp implements SubjectDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             subjects = session.createQuery("from SUBJECT", Subject.class).list();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при выводе списка всех предметов", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

@@ -19,7 +19,7 @@ public class Teacher {
     private int age;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "TEACHER_SKILLSET", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
-    private Set<Skill> skills = new HashSet<Skill>();
+    private Set<Skill> skills = new HashSet<>();
 
     public void setSkills(Set skills){
         this.skills = skills;

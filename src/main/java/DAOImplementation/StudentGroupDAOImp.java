@@ -20,7 +20,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
             session.save(studentGroup);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при добавлении группы студентов", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -36,7 +36,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
             session.update(studentGroup);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при изменении группы студентов", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -52,7 +52,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
             session.delete(studentGroup);
             session.getTransaction().commit();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при удалении группы студентов", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -67,7 +67,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             studentGroup = session.load(StudentGroup.class, groupID);
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при поиске урока по идентификатору", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -83,7 +83,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             groups = session.createQuery("from STUDENT_GROUP", StudentGroup.class).list();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ошибка при выводе списка всех студенческих групп", JOptionPane.OK_OPTION);
+            exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

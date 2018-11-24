@@ -1,9 +1,10 @@
 import DAOImplementation.*;
 import DAOInterfaces.*;
+import logic.LearnClass;
 
 public class Factory {
 
-    private static ClassDAO classDAO = null;
+    private static LearnClassDAO learnClassDAO = null;
     private static SkillDAO skillDAO = null;
     private static StudentGroupDAO studentGroupDAO = null;
     private static SubjectDAO subjectDAO = null;
@@ -17,11 +18,11 @@ public class Factory {
         return instance;
     }
 
-    public ClassDAO getClassDAO(){
-        if (classDAO == null){
-            classDAO = new ClassDAOImp();
+    public LearnClassDAO getLearnClassDAO(){
+        if (learnClassDAO == null){
+            learnClassDAO = new LearnClassDAOImp();
         }
-        return classDAO;
+        return learnClassDAO;
     }
 
     public static SkillDAO getSkillDAO() {
