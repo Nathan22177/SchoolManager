@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of DAO interface for @Teacher object.
+ * Implementation of DAO interface for Teacher object.
  */
 public class TeacherDAOImp implements TeacherDAO {
     
