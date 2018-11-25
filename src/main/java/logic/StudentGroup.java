@@ -36,7 +36,7 @@ public class StudentGroup {
     * to relate groups to courses (subjects) as ONE group to MANY courses.
     */
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "GROUP_COURSES", joinColumns = {@JoinColumn(name = "GROUP_ID")}, inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID")})
+    @JoinTable(name = "SUBJECTS", joinColumns = {@JoinColumn(name = "GROUP_ID")}, inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID")})
     private Set<Subject> subjects = new HashSet<>();
 
 }
