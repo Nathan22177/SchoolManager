@@ -1,7 +1,7 @@
-package DAOImp;
+package DAO.Imp;
 
 
-import DAOInterfaces.LearnClassDAO;
+import DAO.Interfaces.LearnClassDAO;
 import logic.LearnClass;
 import logic.StudentGroup;
 import logic.Subject;

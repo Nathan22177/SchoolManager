@@ -1,8 +1,8 @@
-package DAOImp;
+package DAO.Imp;
 
-import DAOInterfaces.SkillDAO;
-import logic.Proficiency;
+import DAO.Interfaces.SubjectDAO;
 import logic.Skill;
+import logic.Subject;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
@@ -11,17 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of DAO interface for Skill object.
+ * Implementation of DAO interface for Subject object.
  */
-public class SkillDAOImp implements SkillDAO {
-
+public class SubjectDAOImp implements SubjectDAO {
+    
     @Override
-    public void addSkill(Skill skill) {
+    public void addSubject(Subject subject) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(skill);
+            session.save(subject);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -33,12 +33,12 @@ public class SkillDAOImp implements SkillDAO {
     }
 
     @Override
-    public void updateSkill(Skill skill) {
+    public void updateSubject(Subject subject) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(skill);
+            session.update(subject);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -50,12 +50,12 @@ public class SkillDAOImp implements SkillDAO {
     }
 
     @Override
-    public void deleteSkill(Skill skill) {
+    public void deleteSubject(Subject subject) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(skill);
+            session.delete(subject);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -67,12 +67,12 @@ public class SkillDAOImp implements SkillDAO {
     }
 
     @Override
-    public Skill getSkillByName(String skillName) {
+    public Subject getSubjectByName(String name) {
         Session session = null;
-        Skill skill = null;
+        Subject subject = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            skill = session.load(Skill.class, skillName);
+            subject = session.load(Subject.class, name);
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -80,43 +80,61 @@ public class SkillDAOImp implements SkillDAO {
                 session.close();
             }
         }
-        return skill;
+        return subject;
     }
 
     @Override
-    public List getAllSkillsByProficiency(Proficiency proficiency) {
+    public Subject getSubjectByID(int subjectID) {
         Session session = null;
-        List skills;
+        Subject subject = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            subject = session.load(Subject.class, subjectID);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return subject;
+    }
+
+    @Override
+    public List getAllSubjects() {
+        Session session = null;
+        List subjects = new ArrayList<Subject>();
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            String selectHQL = "FROM Subject";
+            Query query = session.createQuery(selectHQL);
+            subjects = query.list();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return subjects;
+    }
+
+    @Override
+    public List getAllSubjectsByRequiredSkill(Skill skill) {
+        Session session = null;
+        List subjects;
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            String selectHQL = "FROM SKILLS WHERE SKILL_REQUIRED = :prof";
-            Query query = session.createQuery(selectHQL).setParameter("prof", proficiency);
-            skills = query.list();
+            String skillName = skill.getName();
+            String selectHQL = "FROM SUBJECT WHERE SKILL_NAME = :skillName";
+            Query query = session.createQuery(selectHQL).setParameter("skillName", skillName);
+            subjects = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
         }
-        return skills;
-    }
-
-    @Override
-    public List getAllSkills() {
-        Session session = null;
-        List skills = new ArrayList<Skill>();
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            String selectHQL = "FROM Skill";
-            Query query = session.createQuery(selectHQL);
-            skills = query.list();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return skills;
+        return subjects;
     }
 }

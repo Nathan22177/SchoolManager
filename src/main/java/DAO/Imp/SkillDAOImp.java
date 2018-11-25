@@ -1,9 +1,8 @@
-package DAOImp;
+package DAO.Imp;
 
-import DAOInterfaces.TeacherDAO;
+import DAO.Interfaces.SkillDAO;
 import logic.Proficiency;
-import logic.Subject;
-import logic.Teacher;
+import logic.Skill;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
@@ -12,17 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of DAO interface for Teacher object.
+ * Implementation of DAO interface for Skill object.
  */
-public class TeacherDAOImp implements TeacherDAO {
-    
+public class SkillDAOImp implements SkillDAO {
+
     @Override
-    public void addTeacher(Teacher teacher) {
+    public void addSkill(Skill skill) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(teacher);
+            session.save(skill);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -34,12 +33,12 @@ public class TeacherDAOImp implements TeacherDAO {
     }
 
     @Override
-    public void updateTeacher(Teacher teacher) {
+    public void updateSkill(Skill skill) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(teacher);
+            session.update(skill);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -51,12 +50,12 @@ public class TeacherDAOImp implements TeacherDAO {
     }
 
     @Override
-    public void deleteTeacher(Teacher teacher) {
+    public void deleteSkill(Skill skill) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(teacher);
+            session.delete(skill);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -68,12 +67,12 @@ public class TeacherDAOImp implements TeacherDAO {
     }
 
     @Override
-    public Teacher getTeacherByID(int teacherID) {
+    public Skill getSkillByName(String skillName) {
         Session session = null;
-        Teacher teacher = null;
+        Skill skill = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            teacher = session.load(Teacher.class, teacherID);
+            skill = session.load(Skill.class, skillName);
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -81,60 +80,43 @@ public class TeacherDAOImp implements TeacherDAO {
                 session.close();
             }
         }
-        return teacher;
+        return skill;
     }
 
     @Override
-    public Teacher getTeacherByLastName(String lastName) {
+    public List getAllSkillsByProficiency(Proficiency proficiency) {
         Session session = null;
-        Teacher teacher = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            teacher = session.load(Teacher.class, lastName);
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return teacher;
-    }
-
-    @Override
-    public List getAllTeachers() {
-        Session session = null;
-        List teachers = new ArrayList<Subject>();
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            String selectHQL = "FROM Teacher";
-            Query query = session.createQuery(selectHQL);
-            teachers = query.list();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return teachers;
-    }
-
-    @Override
-    public List getTeachersByProficiency(Proficiency proficiency) {
-        Session session = null;
-        List teachers;
+        List skills;
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            String selectHQL = "SELECT TEACHER_ID FROM TEACHER_PROF WHERE PROF = :prof";
+            String selectHQL = "FROM SKILLS WHERE SKILL_REQUIRED = :prof";
             Query query = session.createQuery(selectHQL).setParameter("prof", proficiency);
-            teachers = query.list();
+            skills = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
         }
-        return teachers;
+        return skills;
+    }
+
+    @Override
+    public List getAllSkills() {
+        Session session = null;
+        List skills = new ArrayList<Skill>();
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            String selectHQL = "FROM Skill";
+            Query query = session.createQuery(selectHQL);
+            skills = query.list();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return skills;
     }
 }
