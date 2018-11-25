@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of DAO interface for @StudentGroup object.
+ * Implementation of DAO interface for StudentGroup object.
  */
 public class StudentGroupDAOImp implements StudentGroupDAO {
     
