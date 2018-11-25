@@ -6,7 +6,7 @@ import logic.Skill;
 import java.util.List;
 
 /**
- * Data Access Object interface for Skill object.
+ * Data Access Object interface for @Skill object.
  */
 public interface SkillDAO {
     void addSkill(Skill skill);
