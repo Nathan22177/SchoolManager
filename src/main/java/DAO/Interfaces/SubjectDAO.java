@@ -1,4 +1,4 @@
-package DAOInterfaces;
+package DAO.Interfaces;
 
 import logic.Skill;
 import logic.Subject;
