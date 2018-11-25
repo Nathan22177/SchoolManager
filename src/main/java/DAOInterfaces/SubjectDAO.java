@@ -5,6 +5,9 @@ import logic.Subject;
 
 import java.util.List;
 
+/**
+ * Data Access Object interface for Subject object.
+ */
 public interface SubjectDAO {
     void addSubject(Subject subject);
 
