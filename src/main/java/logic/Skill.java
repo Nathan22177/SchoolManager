@@ -18,7 +18,7 @@ public class Skill {
     private String name;
 
     //Generified proficiency associated with particular skill.
-    @Column(name = "SKILL_REQUIRED")
+    @Column(name = "PROF_REQUIRED")
     private Proficiency proficiency;
 
     /*

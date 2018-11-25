@@ -33,6 +33,9 @@ public class LearnClass {
     @Column(name = "CLASS_ID")
     private int learnClassID;
 
+    @Column(name = "SKILL_ASSIGNED")
+    private int skillName;
+
     /**
     * Since there might be MANY classes conducted for EACh attending group, and EACH group may attend
     * several classes we're choosing to relate them as MANY lessons to MANY student groups.
