@@ -9,7 +9,7 @@ import logic.Teacher;
 import java.util.List;
 
 /**
- * Data Access Object interface for lesson/class/seminar/lecture object.
+ * Data Access Object interface for lesson/class/lecture object.
  */
 public interface LearnClassDAO {
     void addLearnClass(LearnClass lesson);
