@@ -11,6 +11,10 @@ public class Factory {
     private static TeacherDAO teacherDAO = null;
     private static Factory instance = null;
 
+    /**
+     * Implementation of a singleton Factory
+     * @return singleton instance of Data Access Object
+     */
     public static synchronized Factory getInstance(){
         if (instance == null){
             instance = new Factory();
