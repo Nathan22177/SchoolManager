@@ -1,8 +1,11 @@
-package DAOImplementation;
+package DAOImp;
 
-import DAOInterfaces.SubjectDAO;
-import logic.Skill;
+
+import DAOInterfaces.LearnClassDAO;
+import logic.LearnClass;
+import logic.StudentGroup;
 import logic.Subject;
+import logic.Teacher;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
@@ -11,17 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of DAO interface for Subject object.
+ * Implementation of DAO interface for class/lecture/etc.
  */
-public class SubjectDAOImp implements SubjectDAO {
-    
+public class LearnClassDAOImp implements LearnClassDAO {
+
     @Override
-    public void addSubject(Subject subject) {
+    public void addLearnClass(LearnClass lesson) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(subject);
+            session.save(lesson);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -33,12 +36,12 @@ public class SubjectDAOImp implements SubjectDAO {
     }
 
     @Override
-    public void updateSubject(Subject subject) {
+    public void updateLearnClass(LearnClass lesson) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(subject);
+            session.update(lesson);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -50,12 +53,12 @@ public class SubjectDAOImp implements SubjectDAO {
     }
 
     @Override
-    public void deleteSubject(Subject subject) {
+    public void deleteLearnClass(LearnClass lesson) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(subject);
+            session.delete(lesson);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -67,12 +70,12 @@ public class SubjectDAOImp implements SubjectDAO {
     }
 
     @Override
-    public Subject getSubjectByName(String name) {
+    public LearnClass getLearnClassByID(int learnClassID) {
         Session session = null;
-        Subject subject = null;
+        LearnClass lesson = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            subject = session.load(Subject.class, name);
+            lesson = session.load(LearnClass.class, learnClassID);
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -80,61 +83,83 @@ public class SubjectDAOImp implements SubjectDAO {
                 session.close();
             }
         }
-        return subject;
+        return lesson;
     }
 
     @Override
-    public Subject getSubjectByID(int subjectID) {
+    public List getAllLearnClasses() {
         Session session = null;
-        Subject subject = null;
+        List classes = new ArrayList<>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            subject = session.load(Subject.class, subjectID);
+            String selectHql = "FROM LearnClass";
+            Query query = session.createQuery(selectHql);
+            classes = query.list();
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
+
         }
-        return subject;
+        return classes;
     }
 
     @Override
-    public List getAllSubjects() {
+    public List getLearnClassesByTeacher(Teacher teacher) {
         Session session = null;
-        List subjects = new ArrayList<Subject>();
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            String selectHQL = "FROM Subject";
-            Query query = session.createQuery(selectHQL);
-            subjects = query.list();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return subjects;
-    }
-
-    @Override
-    public List getAllSubjectsByRequiredSkill(Skill skill) {
-        Session session = null;
-        List subjects;
+        List classes;
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            String skillName = skill.getName();
-            String selectHQL = "FROM SUBJECT WHERE SKILL_NAME = :skillName";
-            Query query = session.createQuery(selectHQL).setParameter("skillName", skillName);
-            subjects = query.list();
+            int teacherID = teacher.getTeacherID();
+            String selectHQL = "FROM CLASS WHERE TEACHER_ID = :teacherID";
+            Query query = session.createQuery(selectHQL).setParameter("teacherID", teacherID);
+            classes = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
         }
-        return subjects;
+        return classes;
+    }
+
+    @Override
+    public List getLearnClassesBySubject(Subject subject) {
+        Session session = null;
+        List classes;
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            int subjectID = subject.getSubjectID();
+            String selectHQL = "FROM CLASS WHERE SUBJECT_ID = :subjectID";
+            Query query = session.createQuery(selectHQL).setParameter("subjectID", subjectID);
+            classes = query.list();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return classes;
+    }
+
+    @Override
+    public List getLearnClassesByStudentGroup(StudentGroup studentGroup) {
+        Session session = null;
+        List classes;
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            int groupID = studentGroup.getGroupID();
+            String selectHQL = "FROM CLASS WHERE GROUP_ID = :groupID";
+            Query query = session.createQuery(selectHQL).setParameter("groupID", groupID);
+            classes = query.list();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return classes;
     }
 }

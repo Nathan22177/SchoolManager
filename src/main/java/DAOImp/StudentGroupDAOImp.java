@@ -1,9 +1,8 @@
-package DAOImplementation;
+package DAOImp;
 
-import DAOInterfaces.TeacherDAO;
-import logic.Proficiency;
+import DAOInterfaces.StudentGroupDAO;
+import logic.StudentGroup;
 import logic.Subject;
-import logic.Teacher;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
@@ -12,17 +11,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of DAO interface for Teacher object.
+ * Implementation of DAO interface for StudentGroup object.
  */
-public class TeacherDAOImp implements TeacherDAO {
+public class StudentGroupDAOImp implements StudentGroupDAO {
     
     @Override
-    public void addTeacher(Teacher teacher) {
+    public void addStudentGroup(StudentGroup studentGroup) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(teacher);
+            session.save(studentGroup);
+            session.getTransaction().commit();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+    }
+    
+    @Override
+    public void updateStudentGroup(StudentGroup studentGroup) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.update(studentGroup);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -34,12 +50,12 @@ public class TeacherDAOImp implements TeacherDAO {
     }
 
     @Override
-    public void updateTeacher(Teacher teacher) {
+    public void deleteStudentGroup(StudentGroup studentGroup) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(teacher);
+            session.delete(studentGroup);
             session.getTransaction().commit();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -51,13 +67,12 @@ public class TeacherDAOImp implements TeacherDAO {
     }
 
     @Override
-    public void deleteTeacher(Teacher teacher) {
+    public StudentGroup getGroupByID(int groupID) {
         Session session = null;
+        StudentGroup studentGroup = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(teacher);
-            session.getTransaction().commit();
+            studentGroup = session.load(StudentGroup.class, groupID);
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -65,51 +80,18 @@ public class TeacherDAOImp implements TeacherDAO {
                 session.close();
             }
         }
+        return studentGroup;
     }
 
     @Override
-    public Teacher getTeacherByID(int teacherID) {
+    public List getAllStudentGroups() {
         Session session = null;
-        Teacher teacher = null;
+        List groups = new ArrayList<Class>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            teacher = session.load(Teacher.class, teacherID);
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return teacher;
-    }
-
-    @Override
-    public Teacher getTeacherByLastName(String lastName) {
-        Session session = null;
-        Teacher teacher = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            teacher = session.load(Teacher.class, lastName);
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return teacher;
-    }
-
-    @Override
-    public List getAllTeachers() {
-        Session session = null;
-        List teachers = new ArrayList<Subject>();
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            String selectHQL = "FROM Teacher";
+            String selectHQL = "FROM StudentGroup";
             Query query = session.createQuery(selectHQL);
-            teachers = query.list();
+            groups = query.list();
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -117,24 +99,61 @@ public class TeacherDAOImp implements TeacherDAO {
                 session.close();
             }
         }
-        return teachers;
+        return groups;
     }
 
     @Override
-    public List getTeachersByProficiency(Proficiency proficiency) {
+    public List getAllStudentGroupsByYear(int year) {
         Session session = null;
-        List teachers;
+        List groups;
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            String selectHQL = "SELECT TEACHER_ID FROM TEACHER_PROF WHERE PROF = :prof";
-            Query query = session.createQuery(selectHQL).setParameter("prof", proficiency);
-            teachers = query.list();
+            String selectHQL = "FROM STUDENT_GROUP WHERE GRADE = :year";
+            Query query = session.createQuery(selectHQL).setParameter("year", year);
+            groups = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
         }
-        return teachers;
+        return groups;
+    }
+
+    @Override
+    public List getAllStudentGroupsByFlow(String flow) {
+        Session session = null;
+        List groups;
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            String selectHQL = "FROM STUDENT_GROUP WHERE STUDENT_FLOW = :flow";
+            Query query = session.createQuery(selectHQL).setParameter("flow", flow);
+            groups = query.list();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return groups;
+    }
+
+    @Override
+    public List getAllStudentGroupsBySubject(Subject subject) {
+        Session session = null;
+        List classes;
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            int subjectID = subject.getSubjectID();
+            String selectHQL = "FROM CLASS WHERE SUBJECT_ID = :subjectID";
+            Query query = session.createQuery(selectHQL).setParameter("subjectID", subjectID);
+            classes = query.list();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return classes;
     }
 }

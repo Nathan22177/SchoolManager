@@ -1,4 +1,4 @@
-package DAOImplementation;
+package DAOImp;
 
 import DAOInterfaces.SkillDAO;
 import logic.Proficiency;
