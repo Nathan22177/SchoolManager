@@ -5,6 +5,9 @@ import logic.Teacher;
 import java.sql.SQLException;
 import java.util.Collection;
 
+/**
+ * Demo class for feature-testing.
+ */
 public class Main {
 
     public static void main(String[] args) {
