@@ -1,5 +1,5 @@
-import DAOImp.*;
-import DAOInterfaces.*;
+import DAO.Imp.*;
+import DAO.Interfaces.*;
 
 public class Factory {
 
