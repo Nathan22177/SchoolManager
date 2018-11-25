@@ -5,6 +5,9 @@ import logic.Teacher;
 
 import java.util.List;
 
+/**
+ * Data Access Object interface for Teacher object.
+ */
 public interface TeacherDAO {
     void addTeacher(Teacher teacher);
 
@@ -18,5 +21,5 @@ public interface TeacherDAO {
 
     List getAllTeachers();
 
-    List getTeachersBySkill(Proficiency proficiency);
+    List getTeachersByProficiency(Proficiency proficiency);
 }
