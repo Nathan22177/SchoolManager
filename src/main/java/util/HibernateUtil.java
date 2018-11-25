@@ -3,6 +3,7 @@ package util;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+//Implementing session factory and getter for it.
 public class HibernateUtil {
     private static final SessionFactory sessionFactory;
 
