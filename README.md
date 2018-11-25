@@ -20,5 +20,10 @@ Which describes what competence is required to teach this subject.
 #### Attending groups
 We store a link to a Set of groups that are to be attending/attended this particular class. Which is obviuosly convinient to keep track of things.
 
+
+### Subject
+#### ID
+
+
 ![alt text](https://i.gyazo.com/3397a421f8f0620b53472f79b487a72c.png)
 <div style="text-align:center"> Figure: "Data manipulations" </div>
