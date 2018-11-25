@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of DAO interface for @class/lecture/etc.
+ * Implementation of DAO interface for class/lecture/etc.
  */
 public class LearnClassDAOImp implements LearnClassDAO {
 
