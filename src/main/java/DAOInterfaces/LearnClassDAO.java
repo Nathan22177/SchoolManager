@@ -16,7 +16,7 @@ public interface LearnClassDAO {
 
     void deleteLearnClass(LearnClass lesson);
 
-    LearnClass getLearnClassByID(Long learnClassID);
+    LearnClass getLearnClassByID(int learnClassID);
 
     List getAllLearnClasses();
 

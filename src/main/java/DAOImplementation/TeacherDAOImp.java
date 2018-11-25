@@ -5,6 +5,7 @@ import logic.Proficiency;
 import logic.Subject;
 import logic.Teacher;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import util.HibernateUtil;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class TeacherDAOImp implements TeacherDAO {
     }
 
     @Override
-    public Teacher getTeacherByID(Long teacherID) {
+    public Teacher getTeacherByID(int teacherID) {
         Session session = null;
         Teacher teacher = null;
         try {
@@ -103,7 +104,9 @@ public class TeacherDAOImp implements TeacherDAO {
         List teachers = new ArrayList<Subject>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            teachers = session.createQuery("from TEACHER", Teacher.class).list();
+            String selectHQL = "FROM Teacher";
+            Query query = session.createQuery(selectHQL);
+            teachers = query.list();
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -121,7 +124,9 @@ public class TeacherDAOImp implements TeacherDAO {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            teachers = session.createQuery("select TEACHER_ID from TEACHER_SKILLSET where SKILLS = :prof").setParameter("prof", proficiency).list();
+            String selectHQL = "SELECT TEACHER_ID FROM TEACHER_SKILLSET WHERE SKILLS = :prof";
+            Query query = session.createQuery(selectHQL).setParameter("prof", proficiency);
+            teachers = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

@@ -12,7 +12,7 @@ public interface StudentGroupDAO {
 
     void deleteStudentGroup(StudentGroup studentGroup);
 
-    StudentGroup getGroupByID(Long groupID);
+    StudentGroup getGroupByID(int groupID);
 
     List getAllStudentGroups();
 

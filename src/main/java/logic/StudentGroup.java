@@ -14,7 +14,7 @@ public class StudentGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "GROUP_ID", length = 10, nullable = false)
-    private Long groupID;
+    private int groupID;
 
     @Column(name = "GRADE", length = 5)
     private int year;

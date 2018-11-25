@@ -67,7 +67,7 @@ public class LearnClassDAOImp implements LearnClassDAO {
     }
 
     @Override
-    public LearnClass getLearnClassByID(Long learnClassID) {
+    public LearnClass getLearnClassByID(int learnClassID) {
         Session session = null;
         LearnClass lesson = null;
         try {
@@ -104,14 +104,16 @@ public class LearnClassDAOImp implements LearnClassDAO {
     }
 
     @Override
-    public List<LearnClass> getLearnClassesByTeacher(Teacher teacher) {
+    public List getLearnClassesByTeacher(Teacher teacher) {
         Session session = null;
-        List<LearnClass> classes;
+        List classes;
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            Long teacherID = teacher.getTeaherID();
-            classes = session.createQuery("from CLASS where TEACHER_ID = :teacherID").setParameter("teacherID", teacherID).list();
+            int teacherID = teacher.getTeacherID();
+            String selectHQL = "FROM CLASS WHERE TEACHER_ID = :teacherID";
+            Query query = session.createQuery(selectHQL).setParameter("teacherID", teacherID);
+            classes = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -121,14 +123,16 @@ public class LearnClassDAOImp implements LearnClassDAO {
     }
 
     @Override
-    public List<LearnClass> getLearnClassesBySubject(Subject subject) {
+    public List getLearnClassesBySubject(Subject subject) {
         Session session = null;
-        List<LearnClass> classes;
+        List classes;
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            Long subjectID = subject.getSubjectID();
-            classes = session.createQuery("from CLASS where SUBJECT_ID = :subjectID").setParameter("subjectID", subjectID).list();
+            int subjectID = subject.getSubjectID();
+            String selectHQL = "FROM CLASS WHERE SUBJECT_ID = :subjectID";
+            Query query = session.createQuery(selectHQL).setParameter("subjectID", subjectID);
+            classes = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -138,14 +142,16 @@ public class LearnClassDAOImp implements LearnClassDAO {
     }
 
     @Override
-    public List<LearnClass> getLearnClassesByStudentGroup(StudentGroup studentGroup) {
+    public List getLearnClassesByStudentGroup(StudentGroup studentGroup) {
         Session session = null;
-        List<LearnClass> classes;
+        List classes;
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            Long groupID = studentGroup.getGroupID();
-            classes = session.createQuery("from CLASS where GROUP_ID = :groupID").setParameter("groupID", groupID).list();
+            int groupID = studentGroup.getGroupID();
+            String selectHQL = "FROM CLASS WHERE GROUP_ID = :groupID";
+            Query query = session.createQuery(selectHQL).setParameter("groupID", groupID);
+            classes = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

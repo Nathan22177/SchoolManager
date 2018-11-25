@@ -14,7 +14,7 @@ public interface SubjectDAO {
 
     Subject getSubjectByName(String name);
 
-    Subject getSubjectByID(Long subjectID);
+    Subject getSubjectByID(int subjectID);
 
     List getAllSubjects();
 

@@ -15,7 +15,7 @@ public class Main {
             LearnClass lesson = (LearnClass) aClass;
             Subject subject = Factory.getSubjectDAO().getSubjectByID(lesson.getSubjectID());
             Teacher teacher = Factory.getTeacherDAO().getTeacherByID(lesson.getTeacherID());
-            System.out.println("Занятие по дисциплине : " + subject.getSubjectName() + ". Проводит : " + teacher.getFirstName() + teacher.getLastName());
+            System.out.println(lesson.toString(subject.getSubjectName(), teacher.getTeacherFirstName(), teacher.getTeacherFirstName()));
         }
     }
 }

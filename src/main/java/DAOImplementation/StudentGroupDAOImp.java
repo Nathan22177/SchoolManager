@@ -4,6 +4,7 @@ import DAOInterfaces.StudentGroupDAO;
 import logic.StudentGroup;
 import logic.Subject;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import util.HibernateUtil;
 
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
     }
 
     @Override
-    public StudentGroup getGroupByID(Long groupID) {
+    public StudentGroup getGroupByID(int groupID) {
         Session session = null;
         StudentGroup studentGroup = null;
         try {
@@ -85,7 +86,9 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         List groups = new ArrayList<Class>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            groups = session.createQuery("from STUDENT_GROUP", StudentGroup.class).list();
+            String selectHQL = "FROM StudentGroup";
+            Query query = session.createQuery(selectHQL);
+            groups = query.list();
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -103,7 +106,9 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            groups = session.createQuery("from STUDENT_GROUP where GRADE = :year").setParameter("year", year).list();
+            String selectHQL = "FROM STUDENT_GROUP WHERE GRADE = :year";
+            Query query = session.createQuery(selectHQL).setParameter("year", year);
+            groups = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -119,7 +124,9 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            groups = session.createQuery("from STUDENT_GROUP where STUDENT_FLOW = :flow").setParameter("flow", flow).list();
+            String selectHQL = "FROM STUDENT_GROUP WHERE STUDENT_FLOW = :flow";
+            Query query = session.createQuery(selectHQL).setParameter("flow", flow);
+            groups = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -135,8 +142,10 @@ public class StudentGroupDAOImp implements StudentGroupDAO {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            Long subjectID = subject.getSubjectID();
-            classes = session.createQuery("from CLASS where SUBJECT_ID = :subjectID").setParameter("subjectID", subjectID).list();
+            int subjectID = subject.getSubjectID();
+            String selectHQL = "FROM CLASS WHERE SUBJECT_ID = :subjectID";
+            Query query = session.createQuery(selectHQL).setParameter("subjectID", subjectID);
+            classes = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

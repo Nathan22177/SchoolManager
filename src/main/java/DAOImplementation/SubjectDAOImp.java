@@ -4,6 +4,7 @@ import DAOInterfaces.SubjectDAO;
 import logic.Skill;
 import logic.Subject;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import util.HibernateUtil;
 
 import java.util.ArrayList;
@@ -80,7 +81,7 @@ public class SubjectDAOImp implements SubjectDAO {
     }
 
     @Override
-    public Subject getSubjectByID(Long subjectID) {
+    public Subject getSubjectByID(int subjectID) {
         Session session = null;
         Subject subject = null;
         try {
@@ -102,7 +103,9 @@ public class SubjectDAOImp implements SubjectDAO {
         List subjects = new ArrayList<Subject>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            subjects = session.createQuery("from SUBJECT", Subject.class).list();
+            String selectHQL = "FROM Subject";
+            Query query = session.createQuery(selectHQL);
+            subjects = query.list();
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -121,7 +124,9 @@ public class SubjectDAOImp implements SubjectDAO {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             String skillName = skill.getName();
-            subjects = session.createQuery("from SUBJECT where SKILL_NAME = :skillName").setParameter("skillName", skillName).list();
+            String selectHQL = "FROM SUBJECT WHERE SKILL_NAME = :skillName";
+            Query query = session.createQuery(selectHQL).setParameter("skillName", skillName);
+            subjects = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

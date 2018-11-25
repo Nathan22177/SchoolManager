@@ -4,6 +4,7 @@ import DAOInterfaces.SkillDAO;
 import logic.Proficiency;
 import logic.Skill;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import util.HibernateUtil;
 
 import java.util.ArrayList;
@@ -86,7 +87,9 @@ public class SkillDAOImp implements SkillDAO {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            skills = session.createQuery("from SKILLS where SKILL_REQUIRED = :prof").setParameter("prof", proficiency).list();
+            String selectHQL = "FROM SKILLS WHERE SKILL_REQUIRED = :prof";
+            Query query = session.createQuery(selectHQL).setParameter("prof", proficiency);
+            skills = query.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -101,7 +104,9 @@ public class SkillDAOImp implements SkillDAO {
         List skills = new ArrayList<Skill>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            skills = session.createQuery("from SKILL", Skill.class).list();
+            String selectHQL = "FROM Skill";
+            Query query = session.createQuery(selectHQL);
+            skills = query.list();
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {

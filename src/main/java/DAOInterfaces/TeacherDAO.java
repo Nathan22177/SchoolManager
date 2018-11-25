@@ -12,7 +12,7 @@ public interface TeacherDAO {
 
     void deleteTeacher(Teacher teacher);
 
-    Teacher getTeacherByID(Long teacherID);
+    Teacher getTeacherByID(int teacherID);
 
     Teacher getTeacherByLastName(String lastName);
 
