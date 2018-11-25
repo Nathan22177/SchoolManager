@@ -5,6 +5,9 @@ import logic.Subject;
 
 import java.util.List;
 
+/**
+ * Data Access Object interface for object describing a group of students.
+ */
 public interface StudentGroupDAO {
     void addStudentGroup(StudentGroup studentGroup);
 

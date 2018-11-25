@@ -11,6 +11,9 @@ import util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of DAO interface for @Teacher object.
+ */
 public class TeacherDAOImp implements TeacherDAO {
     
     @Override
@@ -118,13 +121,13 @@ public class TeacherDAOImp implements TeacherDAO {
     }
 
     @Override
-    public List getTeachersBySkill(Proficiency proficiency) {
+    public List getTeachersByProficiency(Proficiency proficiency) {
         Session session = null;
         List teachers;
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            String selectHQL = "SELECT TEACHER_ID FROM TEACHER_SKILLSET WHERE SKILLS = :prof";
+            String selectHQL = "SELECT TEACHER_ID FROM TEACHER_PROF WHERE PROF = :prof";
             Query query = session.createQuery(selectHQL).setParameter("prof", proficiency);
             teachers = query.list();
         } finally {

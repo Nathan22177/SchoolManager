@@ -10,6 +10,9 @@ import util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of DAO interface for @Subject object.
+ */
 public class SubjectDAOImp implements SubjectDAO {
     
     @Override
