@@ -6,11 +6,17 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+//Annotating Hibernate entity.
 @Entity
+
+//Passing typical boilerplate to lombok.
 @Data
+
+//Annotating Hibernate table for all teachers.
 @Table(name = "TEACHER")
 public class Teacher {
 
+    //Here we are declaring id for each teacher.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="TEACHER_ID", length = 10, nullable = false)
@@ -22,11 +28,12 @@ public class Teacher {
     @Column(name = "LAST_NAME", length = 20)
     private String teacherLastName;
 
-    @Column(name = "AGE", length = 5)
-    private int teacherAge;
-
+    /**
+     * Since there may be MANY teachers where EACH might be proficient in SEVERAL fields,
+     * we're choosing to relate teachers to proficiencies as @ManyToMany.
+     */
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "TEACHER_SKILLSET", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "SKILLS")})
-    private Set<Skill> teacherSkills = new HashSet<>();
+    @JoinTable(name = "TEACHER_PROF", joinColumns = {@JoinColumn(name = "TEACHER_ID")}, inverseJoinColumns = {@JoinColumn(name = "PROF")})
+    private Set<Proficiency> teacherProf = new HashSet<>();
 
 }
